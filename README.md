@@ -56,10 +56,18 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 3) Password For Sudo: flairadmin7
 
 ##To update the current angular app
-1) ssh into admin:
+1) Make sure your changes is in master's dist folder
+2) ssh into admin:
     ssh admin@162.243.170.145
-2) Pull down changes from master:
+3) Navigate to flairsheet folder
+4) Pull down changes from master:
     git fetch --all
     git rebase
-3) Run the command:
-    build
+5) Run the command:
+    npm install
+    pm2 restart server
+
+##Optional:
+##Install Lighthouse (Progressive Web App Analyzer)
+1) Go to https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk/related?hl=en
+2) Add the extension to Chrome.
