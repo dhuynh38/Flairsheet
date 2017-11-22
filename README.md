@@ -56,16 +56,19 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 3) Password For Sudo: flairadmin7
 
 ## To update the current angular app production ##
-1) Make sure your changes is in master's dist folder
-2) ssh into admin:
+1) Build production on your computer:
+    ng build --prod
+2) Push all your changes including your dist folder up to master
+3) ssh into admin:
     ssh admin@162.243.170.145
-3) Navigate to flairsheet folder
-4) Pull down changes from master:
+4) Navigate to flairsheet folder
+5) Pull down changes from master:
     git fetch --all
     git rebase
-5) Run the command:
+6) Run the command:
     npm install
-    pm2 restart server
+    pm2 delete 0
+    pm2 start server
 
 ## Optional ##
 ### Install Lighthouse (Progressive Web App Analyzer) ###
