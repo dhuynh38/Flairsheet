@@ -55,7 +55,7 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 3) Give me your public key and I can add you the admin keys.
 3) Password For Sudo: flairadmin7
 
-## To update the current angular app ##
+## To update the current angular app production ##
 1) Make sure your changes is in master's dist folder
 2) ssh into admin:
     ssh admin@162.243.170.145
