@@ -1,5 +1,17 @@
 # Flairsheet
-A social media app designed to enable people to show off their skill through a flairsheet containing images, videos, and information about themselves.
+A social media platform designed to provide anyone with the ability to show off their skills through a flairsheet containing images, videos, and information about themselves. Skills can be anything.
+
+## To install the app on mobile devices ##
+### iPhone ###
+1) Navigate to flairsheet.com
+2) Press the Box with the Arrow icon on the bottom of the Safari Browser
+2) Scroll the Menu at the bottom to the right to see 'Add to Homescreen' button
+3) Press that button and you should have it on your homescreen
+
+### Android phones ###
+1) Navigate to flairsheet.com
+2) Press the + icon on the top left of the browser to install
+3) Or a banner should popup asking for installation.
 
 ## Installation  and Setup Process ##
 
@@ -74,26 +86,18 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 ### Install Lighthouse (Progressive Web App Analyzer) ###
 1) Go to https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk/related?hl=en
 2) Add the extension to Chrome.
-
-
-
-
-
-
-
-
-
-
-
+3) Run the test by navigating to flairsheet.com and clicking on the Lighthouse icon
+4) Click generate report to see how the app is compliant to Google standardss
 
 ## Useful Commands ##
 ### Development server ###
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Run `ng serve -prod` to serve up a production server.
+A production server has service workers and is more like what our actualy app is on the site.
 
 ### Code scaffolding ###
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`. Example: To generate a service for a rocket, run `ng generate component RocketComponent`
 
 ### Build ###
 
@@ -101,7 +105,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ### Running unit tests ###
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). You don't have to do any testing since we are a small group and can just ask each other when something goes wrong.
 
 ### MongoDB: ###
 
@@ -122,6 +126,8 @@ mongo -u admin -p --authenticationDatabase admin
 mongo -u <username> -p --authenticationDatabase <databaseUserStoredAt>
 
 ### PM2 (Process Manger): ###
+This is our main app manager. It controls the app and restarts the app when the
+server crashes or is rebooted. This is what we mainly use to deploy our app.
 #### Show status of apps running: ####
 pm2 status
 
@@ -130,6 +136,9 @@ pm2 start server
 pm2 start <appFile>
 
 ### Nginx ###
+This is the backend proxy server that enables us to host our app securely.
+It sets up all secure connections to us and runs our encryptions. This is the
+reason why our app has https.
 #### Start nginx server ####
 sudo systemctl start nginx
 
