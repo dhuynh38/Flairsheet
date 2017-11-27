@@ -13,6 +13,10 @@ A social media platform designed to provide anyone with the ability to show off 
 2) Press the + icon on the top left of the browser to install
 3) Or a banner should popup asking for installation.
 
+### Useful Documentation ###
+Angular Material: https://material.angular.io/
+Flex Layout: https://github.com/angular/flex-layout/wiki/API-Documentation
+
 ## Installation  and Setup Process ##
 
 ## Install Node.js and NPM ##
