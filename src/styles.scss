@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import './color-theme';
+$background-color: #E1EAEA;
+$full-white: #ffffff;
+$primary-blue: #2196f3;
 
 
 body {
@@ -7,13 +10,73 @@ body {
   margin: 0px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: $background-color;
 }
 
+h1 {
+  font-size: 2.5vw;
+}
+
+h2 {
+  font-size: 2vw;
+}
+
+/* Useful Classes */
 .container {
   margin: 20px;
-  display: flex;
+}
+
+.margin-bottom-100 {
+  margin-bottom: 100px;
 }
 
 .fill-space {
   flex: 1 1 auto;
+}
+
+.almost-half-width {
+  width: 45%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.center-text {
+  text-align: center;
+  width: 30%;
+}
+
+.no-padding-margin {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* Recolor of components */
+.mat-button-toggle-checked {
+  background-color: $primary-blue;
+  color: $full-white;
+}
+
+.mat-button-toggle-disabled.mat-button-toggle-checked {
+  background-color: $primary-blue;
+  color: $full-white;;
+}
+
+/* Header */
+.mat-toolbar-single-row {
+  height: 42px;
+}
+
+/* Main Page */
+#login .mat-button-toggle-label-content {
+  padding: 0 100px;
+}
+
+#signup .mat-button-toggle-label-content {
+  padding: 0 100px;
 }

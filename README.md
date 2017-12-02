@@ -14,8 +14,11 @@ A social media platform designed to provide anyone with the ability to show off 
 3) Or a banner should popup asking for installation.
 
 ### Useful Documentation ###
-Angular Material: https://material.angular.io/
+Angular 2.0+ Documentation: https://angular.io/
+Angular Material (basic building blocks): https://material.angular.io/
 Flex Layout: https://github.com/angular/flex-layout/wiki/API-Documentation
+Flex Layout Conceptual: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+Useful Data Binding Angular 2.0: https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/12/12/simplifying-two-way-data-binding-in-angular-2.aspx
 
 ## Installation  and Setup Process ##
 
@@ -75,7 +78,7 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 1) Build production on your computer:
     ng build --prod
 2) Push all your changes including your dist folder up to master
-3) ssh into admin:
+3) ssh into digital ocean's server using admin:
     ssh admin@162.243.170.145
 4) Navigate to flairsheet folder
 5) Pull down changes from master:
@@ -85,6 +88,8 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
     npm install
     pm2 delete 0
     pm2 start server
+7) Exit the server with command:
+    exit
 
 ## Optional ##
 ### Install Lighthouse (Progressive Web App Analyzer) ###

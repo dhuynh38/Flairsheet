@@ -1,3 +1,84 @@
-<p>
-  signup works!
-</p>
+<h2>Create An Account</h2>
+<form [formGroup]="form"
+      (ngSubmit)="register(form)">
+  <div fxLayout="row">
+    <mat-form-field class="almost-half-width">
+      <input name="firstname"
+             matInput
+             placeholder="First Name"
+             required
+             type="text">
+    </mat-form-field>
+    <span class="fill-space"></span>
+    <mat-form-field class="almost-half-width">
+      <input name="lastname"
+             matInput
+             placeholder="Last Name"
+             required
+             type="text">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="full-width">
+    <input name="username"
+           matInput
+           placeholder="Username"
+           required
+           type="text">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input name="email"
+           matInput
+           placeholder="Email"
+           required
+           type="text">
+  </mat-form-field>
+
+  <div fxLayout="row">
+    <mat-form-field class="full-width">
+      <input name="password"
+             matInput
+             placeholder="Password"
+             required
+             type="password">
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row">
+    <mat-form-field class="almost-half-width">
+      <input matInput
+             [matDatepicker]="picker"
+             placeholder="Date of Birth">
+      <mat-datepicker-toggle matSuffix
+                             [for]="picker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker
+                      [touchUi]="true"
+                      startView="year"
+                      [startAt]="startDate">
+      </mat-datepicker>
+    </mat-form-field>
+    <span class="fill-space"></span>
+    <mat-form-field class="almost-half-width">
+      <mat-select placeholder="Gender">
+        <mat-option *ngFor="let gender of genders"
+                    [value]="gender.value">
+          {{ gender.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <p>By creating an account, you agree to the conditions stated in the
+    <a>Terms of Service</a> and
+    <a>Privacy Policy</a>.
+  </p>
+
+  <button mat-raised-button
+          color="primary"
+          class="full-width"
+          aria-label="side menu">
+    Sign Up
+  </button>
+</form>

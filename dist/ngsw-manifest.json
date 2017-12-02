@@ -2,26 +2,24 @@
   "static": {
     "urls": {
       "/polyfills.ad37cd45a71cb38eee76.bundle.js": "e74e95af4f1c82ce8cd07c3793477c67342510d8",
-      "/main.cce858511b45405b9285.bundle.js": "baa5ad107742751a14cf5f376a25d1252df1813a",
+      "/main.678ca6d03b6803382045.bundle.js": "bea157a5046f67cc60a68e83655c469ff3e0ffe0",
       "/sw-register.6819cd2c5fa25470ecf2.bundle.js": "50d549edfbd188ed199d8d0b079afa593202e3ea",
-      "/inline.1a480840bc311b5f8036.bundle.js": "629337762fe341f8aa1f394c54d652ac93e9f600",
-      "/styles.2ca04389aca7a6b65f09.bundle.css": "6751c9db43b31976fff15b46993ced8c9790f8cb",
+      "/inline.c33ecbda88a1d55c3998.bundle.js": "d3264d1b0d29a9f5538a1f9a15a8c8e3a0932e2a",
+      "/styles.ce565ee67520ca1876a3.bundle.css": "7ada11e4095ce08a5becc8fd8d15cdb34bf06856",
       "/assets/favicons/android-chrome-192x192.png": "0cf7037eedee54491f90232f77913fdc8471747a",
       "/assets/favicons/android-chrome-512x512.png": "888011148e4ff82bd9c8eac5e420897d51e17606",
-      "/assets/favicons/apple-touch-icon.png": "6ef86a97cd6910d1f482146251c143b35660f72f",
       "/assets/favicons/favicon-16x16.png": "68980147b92e390e91f6fcaf67072d07bfc422a4",
+      "/assets/favicons/apple-touch-icon.png": "6ef86a97cd6910d1f482146251c143b35660f72f",
       "/assets/favicons/favicon-32x32.png": "823e95d3f0be6664b3a5e17132daa18348ad4d92",
       "/assets/favicons/favicon.ico": "af2fd808783ec045b7562dec84a3d10607937820",
-      "/assets/favicons/mstile-150x150.png": "289103095bb40c86b8a9b4d61d065322ae9251ed",
       "/assets/favicons/safari-pinned-tab.svg": "7d328ead1aefd21a9a86e628e46062fa9afa0873",
-      "/assets/images/notebook-2.jpeg": "bc8c7056b56002121e2a1f9282b162fdece5678c",
-      "/assets/images/notebook-4.jpg": "a944dafd5b0b68ce633aa302f23097c1bbc826c6",
-      "/assets/images/notebook-1.jpeg": "1ff8facd66417c6decc594496d9cdf584dd009c1",
-      "/assets/images/notebook-infinite.jpeg": "0e1fee2e30a59ca4434602226af9687118ce4964",
-      "/assets/images/notebook-3.jpeg": "ef92161f752459d58e54ccdacaabd5d877850b52",
+      "/assets/favicons/mstile-150x150.png": "289103095bb40c86b8a9b4d61d065322ae9251ed",
+      "/assets/svg/flare.svg": "0706550d76ede56b061dbdcc5417dc01c6a0b141",
+      "/assets/svg/supervisor_account.svg": "60fa5bcd729b40e762fca0a35ac9091a90d76928",
+      "/assets/svg/visibility.svg": "4c7caf316a17212ee0463431cdad2e93e1d5669a",
       "/manifest.json": "a251fbdd9e24dbd0dc6eb14f711f2ff647ee85c1",
       "/browserconfig.xml": "14931fff323d556198fb3e6c3315fb9cc9cdb343",
-      "/index.html": "50027e4f52b91adc85ef79f971c893f3978cdfcd"
+      "/index.html": "a8ee26692b4addbcf211ebae8cc08554a85b9757"
     },
     "_generatedFromWebpack": true
   }

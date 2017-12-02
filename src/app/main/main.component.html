@@ -1,0 +1,67 @@
+<div class="container"
+     fxLayout="row"
+     fxLayoutGap="10px"
+     fxLayout.lt-sm="column">
+
+  <mat-card fxFlex="70"
+            fxHide.xs>
+    <mat-card-content>
+      <h1 class="no-padding-margin">The Place To Showoff.</h1>
+      <div class="container margin-top-75"
+           fxLayout="row"
+           fxLayoutAlign="space-around center">
+        <mat-icon svgIcon="flare"
+                  style="width: 15%; height: 15%;"></mat-icon>
+        <mat-icon svgIcon="visibility"
+                  style="width: 15%; height: 15%;"></mat-icon>
+        <mat-icon svgIcon="supervisor_account"
+                  style="width: 15%; height: 15%;"></mat-icon>
+      </div>
+      <div class="container margin-bottom-56"
+           fxLayout="row"
+           fxLayoutAlign="space-around center">
+        <h2 class="center-text">Show The World Your Talents</h2>
+        <h2 class="center-text">Get Recognized For Them</h2>
+        <h2 class="center-text">Gain Support And Compensation</h2>
+      </div>
+      <h1 class="no-padding-margin">Everything is free.</h1>
+      <h1 class="no-padding-margin">Everything is designed for you.</h1>
+    </mat-card-content>
+  </mat-card>
+
+  <div fxFlex="30"
+       fxLayout="column"
+       fxLayoutGap="10px">
+
+    <mat-card fxFlex="10"
+              class="no-padding-margin">
+      <mat-card-content fxLayout="row"
+                        fxLayoutAlign="space-around center">
+
+        <mat-button-toggle id="signup"
+                           fxLayoutAlign="center center"
+                           aria-label="signup tab"
+                           [checked]="signupOn"
+                           [disabled]="signupOn"
+                           (change)="flipTabs()">
+          <span class="bold">Sign Up</span>
+        </mat-button-toggle>
+        <mat-button-toggle id="login"
+                           fxLayoutAlign="center center"
+                           aria-label="login tab"
+                           [checked]="loginOn"
+                           [disabled]="loginOn"
+                           (change)="flipTabs()">
+          <span class="bold">Login</span>
+        </mat-button-toggle>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="90">
+      <mat-card-content min-height="300px">
+        <app-signup *ngIf="signupOn"></app-signup>
+        <app-login *ngIf="loginOn"></app-login>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
