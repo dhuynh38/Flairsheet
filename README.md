@@ -75,20 +75,29 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 3) Password For Sudo: flairadmin7
 
 ## To update the current angular app production ##
-1) Build production on your computer:
+1) Checkout production branch on your computer:
+    git checkout production
+2) Pull in new changes from master branch:
+    git pull origin master
+3) Build production on your computer:
     ng build --prod
-2) Push all your changes including your dist folder up to master
-3) ssh into digital ocean's server using admin:
+4) Add, commit, and push up new changes to production branch:
+    git add .
+    git commit
+    git push origin production
+5) ssh into digital ocean's server using admin:
     ssh admin@162.243.170.145
-4) Navigate to flairsheet folder
-5) Pull down changes from master:
+6) Navigate to flairsheet folder
+7) Make sure you're in production branch:
+    git checkout production
+8) Pull down changes from production branch:
     git fetch --all
     git rebase
-6) Run the command:
+9) Run the command:
     npm install
     pm2 delete 0
     pm2 start server
-7) Exit the server with command:
+10) Exit the server with command:
     exit
 
 ## Optional ##
