@@ -4,7 +4,6 @@ $background-color: #E1EAEA;
 $full-white: #ffffff;
 $primary-blue: #2196f3;
 
-
 body {
   padding: 0px;
   margin: 0px;
@@ -127,4 +126,5 @@ mat-sidenav {
 /* Side Bar */
 #side-nav-container .mat-drawer-backdrop {
   position: fixed;
+  height: 100vh;
 }
