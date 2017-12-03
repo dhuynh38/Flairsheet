@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -11,12 +10,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
     MatButtonModule,
-    MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
@@ -25,11 +24,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatTabsModule,
     MatToolbarModule
   ],
   exports: [
     MatButtonModule,
-    MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
@@ -38,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatInputModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatTabsModule,
     MatToolbarModule
   ]
 })

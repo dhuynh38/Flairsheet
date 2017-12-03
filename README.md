@@ -75,6 +75,8 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 3) Password For Sudo: flairadmin7
 
 ## To update the current angular app production ##
+(This is a weird method because it's a workaround because our
+server doesn't have enough RAM to build prod)
 1) Checkout production branch on your computer:
     git checkout production
 2) Pull in new changes from master branch:
@@ -88,6 +90,7 @@ https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 5) ssh into digital ocean's server using admin:
     ssh admin@162.243.170.145
 6) Navigate to flairsheet folder
+    cd flairsheet
 7) Make sure you're in production branch:
     git checkout production
 8) Pull down changes from production branch:
@@ -119,7 +122,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ### Build ###
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build. If the the page doesn't refresh after
+saving in a editor, try `ng build --poll=2000`
 
 ### Running unit tests ###
 

@@ -10,9 +10,6 @@ import { MatIconRegistry } from '@angular/material';
 })
 export class MainComponent implements OnInit {
 
-  signupOn: boolean;
-  loginOn: boolean;
-
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
       'flare',
@@ -26,18 +23,6 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.signupOn = true;
-    this.loginOn = false;
-  }
-
-  flipTabs() {
-    if (this.signupOn) {
-      this.signupOn = false;
-      this.loginOn = true;
-    } else {
-      this.signupOn = true;
-      this.loginOn = false;
-    }
   }
 
 }

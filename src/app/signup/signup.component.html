@@ -1,4 +1,6 @@
-<h2>Create An Account</h2>
+<h2 fxHide.xs>Create An Account</h2>
+<p fxHide.gt-xs
+   class="bold large-font-size">Create An Account</p>
 <form [formGroup]="form"
       (ngSubmit)="register(form)">
   <div fxLayout="row">
@@ -70,7 +72,7 @@
     </mat-form-field>
   </div>
 
-  <p>By creating an account, you agree to the conditions stated in the
+  <p>By creating an account, you agree to the conditions in the
     <a>Terms of Service</a> and
     <a>Privacy Policy</a>.
   </p>

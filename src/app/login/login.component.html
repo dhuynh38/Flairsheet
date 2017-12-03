@@ -1,4 +1,6 @@
-<h2>Login</h2>
+<h2 fxHide.xs>Login</h2>
+<p fxHide.gt-xs
+   class="bold large-font-size">Login</p>
 <form [formGroup]="form"
       (ngSubmit)="register(form)">
 
@@ -27,6 +29,6 @@
 
   <div fxLayoutAlign="center center"
        class="margin-20">
-      <a>Forgot password?</a>
+      <a>Forgot account?</a>
   </div>
 </form>

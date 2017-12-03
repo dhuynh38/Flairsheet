@@ -21,9 +21,21 @@ h2 {
   font-size: 2vw;
 }
 
+h3 {
+  font-size: 1.5vw;
+}
+
 /* Useful Classes */
-.container {
-  margin: 20px;
+@media screen and (max-width: 959px) {
+  .container {
+    margin: 20px 0px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .container {
+    margin: 20px;
+  }
 }
 
 .margin-bottom-100 {
@@ -48,8 +60,8 @@ h2 {
 }
 
 .no-padding-margin {
-  margin: 0px !important;
-  padding: 0px !important;
+  margin: 0px;
+  padding: 0px;
 }
 
 .bold {
@@ -73,10 +85,29 @@ h2 {
 }
 
 /* Main Page */
-#login .mat-button-toggle-label-content {
+#login {
   padding: 0 100px;
 }
 
-#signup .mat-button-toggle-label-content {
+#signup {
   padding: 0 100px;
+}
+
+#mat-tab-label-0-0, #mat-tab-label-0-1 {
+  min-width: 50%;
+  height: 30px;
+  opacity: 1;
+}
+
+.mat-tab-label-active, #mat-tab-label-0-0:focus, #mat-tab-label-0-1:focus {
+  color: $full-white;
+  background-color: $primary-blue;
+}
+
+#main-card {
+  padding: 0px 24px 24px 24px;
+}
+
+.large-font-size {
+  font-size: 6vw;
 }
