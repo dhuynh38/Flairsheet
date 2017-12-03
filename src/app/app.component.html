@@ -1,5 +1,14 @@
 <div fxLayout="column">
 
-  <app-header></app-header>
-  <router-outlet></router-outlet>
+  <app-header (iconClick)="sidenav.toggle()"></app-header>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav
+                 class="recolor-background">
+      <app-sidebar [loggedIn]="isUserLoggedIn()"
+                   (sideMenuClick)="sidenav.toggle()"></app-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content class="recolor-background">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>

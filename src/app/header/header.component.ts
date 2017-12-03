@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Output() iconClick: EventEmitter<null> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  /* Releases the iconClick event up the chain
+  */
+  emitIconClick() {
+    this.iconClick.emit();
   }
 
 }

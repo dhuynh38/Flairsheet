@@ -1,0 +1,128 @@
+<div *ngIf="loggedIn"
+     fxLayout="column"
+     fxLayoutGap="10px"
+     class="margin-top-10">
+
+  <mat-card id="side-card">
+    <mat-card-content fxLayout="column"
+                      fxLayoutGap="5px">
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="profile side button"
+              (click)="emitSideMenuClick()">
+       Sheet
+      </button>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="profile side button"
+              (click)="emitSideMenuClick()">
+        Notifications
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card id="side-card">
+    <mat-card-content fxLayout="column"
+                      fxLayoutGap="5px">
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="newsfeed side button"
+              (click)="emitSideMenuClick()">
+        Feed
+      </button>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="newsfeed side button"
+              (click)="emitSideMenuClick()">
+        Compensation
+      </button>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="favorites side button"
+              (click)="emitSideMenuClick()">
+        Favorites
+      </button>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="messages side button"
+              (click)="emitSideMenuClick()">
+        Messages
+      </button>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="messages side button"
+              (click)="emitSideMenuClick()">
+        Referrals
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card id="side-card">
+    <mat-card-content fxLayout="column"
+                      fxLayoutGap="5px">
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="settings side button"
+              (click)="emitSideMenuClick()">
+        Settings
+      </button>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="privacy side button"
+              (click)="emitSideMenuClick()">
+        Privacy
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card id="side-card">
+    <mat-card-content fxLayout="column"
+                      fxLayoutGap="5px">
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="sign out side button"
+              (click)="emitSideMenuClick()">
+        Sign Out
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div *ngIf="!loggedIn"
+     fxLayout="column"
+     fxLayoutGap="10px"
+     class="margin-top-10">
+
+  <mat-card id="side-card">
+    <mat-card-content fxLayout="column"
+                      fxLayoutGap="5px">
+
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="login side button"
+              routerLink="/home"
+              (click)="emitSideMenuClick()">
+        Log In
+      </button>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="sign up side button"
+              routerLink="/home"
+              (click)="emitSideMenuClick()">
+        Sign up
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div>

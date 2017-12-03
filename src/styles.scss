@@ -25,6 +25,10 @@ h3 {
   font-size: 1.5vw;
 }
 
+mat-sidenav {
+  width: 150px;
+}
+
 /* Useful Classes */
 @media screen and (max-width: 959px) {
   .container {
@@ -66,6 +70,10 @@ h3 {
 
 .bold {
   font-weight: bold;
+}
+
+.recolor-background {
+  background-color: $background-color;
 }
 
 /* Recolor of components */
