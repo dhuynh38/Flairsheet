@@ -68,6 +68,10 @@ mat-sidenav {
   padding: 0px;
 }
 
+#no-border-button {
+  border-radius: 0px;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -102,7 +106,7 @@ mat-sidenav {
 }
 
 #mat-tab-label-0-0, #mat-tab-label-0-1 {
-  min-width: 50%;
+  min-width: 49%;
   height: 30px;
   opacity: 1;
 }
@@ -118,4 +122,9 @@ mat-sidenav {
 
 .large-font-size {
   font-size: 6vw;
+}
+
+/* Side Bar */
+#side-nav-container .mat-drawer-backdrop {
+  position: fixed;
 }

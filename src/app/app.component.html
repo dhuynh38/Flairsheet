@@ -1,13 +1,18 @@
 <div fxLayout="column">
 
-  <app-header (iconClick)="sidenav.toggle()"></app-header>
-  <mat-sidenav-container>
+  <app-header class="fixed-header"
+              (iconClick)="sidenav.toggle()">
+  </app-header>
+
+  <mat-sidenav-container id="side-nav-container">
     <mat-sidenav #sidenav
-                 class="recolor-background">
+                 class="recolor-background"
+                 fixedInViewport="true"
+                 fixedTopGap="42">
       <app-sidebar [loggedIn]="isUserLoggedIn()"
                    (sideMenuClick)="sidenav.toggle()"></app-sidebar>
     </mat-sidenav>
-    <mat-sidenav-content class="recolor-background">
+    <mat-sidenav-content class="recolor-background margin-top-42">
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

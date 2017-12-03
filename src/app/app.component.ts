@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  userLoggedIn = true;
+  userLoggedIn = false;
 
   /* Checks to see if the user is logged in.
    * @returns {boolean} true if the user is logged in
