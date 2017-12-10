@@ -19,6 +19,7 @@ Angular Material (basic building blocks): https://material.angular.io/
 Flex Layout: https://github.com/angular/flex-layout/wiki/API-Documentation
 Flex Layout Conceptual: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 Useful Data Binding Angular 2.0: https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/12/12/simplifying-two-way-data-binding-in-angular-2.aspx
+Observables (different style of Promises): http://reactivex.io/rxjs/manual/overview.html
 
 ## Installation  and Setup Process ##
 
@@ -61,11 +62,31 @@ https://www.mongodb.com/download-center#community
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 
 ## Pull down the respository ##
-1) Go to gihub and find the clone url
-2) Find a good place to put the project and do:
+1) Go to gihub and fork your own copy of the repo.
+2) Find a good place to put the forked project and do:
     git clone <url>
 3) cd into the repository and run:
     npm install
+4) Set upstream to the main repo.
+
+IMPORTANT: So how we are doing this is that we all work on our own forks. Each
+issues done should have its own branch on your fork. When you are done with an issue,
+create a pull request to master and wait for others to review the PRs. At least
+one other person must review it before merging.
+
+## Install MongoDB Compass ##
+1) Download MongoDB Compass from:
+https://www.mongodb.com/download-center?filter=enterprise#compass
+2) Select 'Community Stable Version' and your platform.
+3) Fill in the boxes with whatever information. It's an email list so
+you can put fake information.
+4) Install instructions from:
+https://docs.mongodb.com/compass/master/install/#download-compass
+5) Make sure your MongoDB sever is up and running.
+6) Fill in the following information:
+  Hostname: localhost
+  Port: 27017
+7) Click connect
 
 ## Connecting to the server ##
 1) Talk to me so I can add you to the server.
@@ -113,7 +134,7 @@ server doesn't have enough RAM to build prod)
 ## Useful Commands ##
 ### Development server ###
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Run `ng serve -prod` to serve up a production server.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Run `ng serve -prod` to serve up a production server. Run `ng serve --poll=2000` if your code doesn't refresh on save.
 A production server has service workers and is more like what our actualy app is on the site.
 
 ### Code scaffolding ###

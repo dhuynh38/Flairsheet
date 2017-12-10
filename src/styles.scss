@@ -4,9 +4,12 @@ $background-color: #E1EAEA;
 $full-white: #ffffff;
 $primary-blue: #2196f3;
 
-html, body, .full-screen {
-  width: 100%;
+html {
   height: 100%;
+}
+
+body, .full-screen {
+  min-height: 100%;
   padding: 0px;
   margin: 0px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 
-
+/**
+ * Component that handles the main page when visiting the app.
+ */
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -10,7 +12,10 @@ import { MatIconRegistry } from '@angular/material';
 })
 export class MainComponent implements OnInit {
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  /**
+   * Contructs the component and inject all parameters.
+   */
+  public constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(
       'flare',
       sanitizer.bypassSecurityTrustResourceUrl('assets/svg/flare.svg'));
@@ -22,7 +27,10 @@ export class MainComponent implements OnInit {
       sanitizer.bypassSecurityTrustResourceUrl('assets/svg/supervisor_account.svg'));
   }
 
-  ngOnInit() {
+  /**
+   * Angular runs after creating the component.
+   */
+  public ngOnInit(): void {
   }
 
 }

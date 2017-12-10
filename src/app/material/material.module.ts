@@ -8,7 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatNativeDateModule } from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -23,7 +23,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatNativeDateModule,
+    MatMomentDateModule,
     MatSelectModule,
     MatSidenavModule,
     MatTabsModule,
@@ -37,7 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatNativeDateModule,
+    MatMomentDateModule,
     MatSelectModule,
     MatSidenavModule,
     MatTabsModule,

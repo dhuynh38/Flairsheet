@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Component that handles when url is unknown.
+ */
 @Component({
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * Contructs the component and inject all parameters.
+   */
+  public constructor() { }
 
-  ngOnInit() {
+  /**
+   * Angular runs after creating the component.
+   */
+  public ngOnInit(): void {
   }
 
 }

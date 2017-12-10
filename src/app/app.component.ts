@@ -1,20 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
+/**
+ * The root component that contains all other components.
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+export class AppComponent implements OnInit {
 
-export class AppComponent {
+  private _userLoggedIn: boolean;
 
-  userLoggedIn = false;
+  /**
+   * Angular runs after creating the component.
+   */
+  public ngOnInit(): void {
+    this._userLoggedIn = false;
+  }
 
-  /* Checks to see if the user is logged in.
-   * @returns {boolean} true if the user is logged in
-  */
-  isUserLoggedIn() {
-    return this.userLoggedIn;
+  /**
+   * Getter for _userLoggedIn.
+   */
+  public get userLoggedIn(): boolean {
+    return this._userLoggedIn;
   }
 
 }

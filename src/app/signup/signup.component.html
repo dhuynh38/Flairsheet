@@ -1,57 +1,90 @@
 <h2 fxHide.xs>Create An Account</h2>
 <p fxHide.gt-xs
-   class="bold large-font-size">Create An Account</p>
+   class="bold large-font-size">
+   Create An Account
+</p>
+
 <form [formGroup]="form"
-      (ngSubmit)="register(form)">
+      (ngSubmit)="register(form)"
+      novalidate>
+
   <div fxLayout="row">
-    <mat-form-field class="almost-half-width">
+    <mat-form-field class="almost-half-width margin-bottom-5">
       <input name="firstname"
+             formControlName="firstname"
              matInput
              placeholder="First Name"
              required
              type="text">
+      <mat-error *ngIf="!isFirstNameValid()">
+        {{ firstNameErrorMessage }}
+      </mat-error>
     </mat-form-field>
     <span class="fill-space"></span>
-    <mat-form-field class="almost-half-width">
+    <mat-form-field class="almost-half-width margin-bottom-5">
       <input name="lastname"
+             formControlName="lastname"
              matInput
              placeholder="Last Name"
              required
              type="text">
+      <mat-error *ngIf="!isLastNameValid()">
+        {{ lastNameErrorMessage }}
+      </mat-error>
     </mat-form-field>
   </div>
 
-  <mat-form-field class="full-width">
+  <mat-form-field class="full-width margin-bottom-5">
     <input name="username"
+           formControlName="username"
            matInput
            placeholder="Username"
            required
            type="text">
+    <mat-error *ngIf="!isUsernameValid()">
+        {{ usernameErrorMessage }}
+    </mat-error>
   </mat-form-field>
 
-  <mat-form-field class="full-width">
+  <mat-form-field class="full-width margin-bottom-5">
     <input name="email"
+           formControlName="email"
            matInput
            placeholder="Email"
            required
            type="text">
+    <mat-error *ngIf="!isEmailValid()">
+        {{ emailErrorMessage }}
+    </mat-error>
   </mat-form-field>
 
   <div fxLayout="row">
-    <mat-form-field class="full-width">
+    <mat-form-field class="full-width margin-bottom-5">
       <input name="password"
+             formControlName="password"
              matInput
              placeholder="Password"
              required
              type="password">
+      <mat-error *ngIf="!isPasswordValid()">
+        {{ passwordErrorMessage }}
+      </mat-error>
     </mat-form-field>
   </div>
 
   <div fxLayout="row">
-    <mat-form-field class="almost-half-width">
-      <input matInput
+    <mat-form-field class="almost-half-width margin-bottom-5">
+      <input name="birthday"
+             formControlName="birthday"
+             matInput
              [matDatepicker]="picker"
+             [min]="minDate"
+             [max]="maxDate"
+             required
              placeholder="Date of Birth">
+      <mat-error *ngIf="!isBirthdayValid()">
+        {{ birthdayErrorMessage }}
+      </mat-error>
       <mat-datepicker-toggle matSuffix
                              [for]="picker">
       </mat-datepicker-toggle>
@@ -62,13 +95,18 @@
       </mat-datepicker>
     </mat-form-field>
     <span class="fill-space"></span>
-    <mat-form-field class="almost-half-width">
-      <mat-select placeholder="Gender">
-        <mat-option *ngFor="let gender of genders"
-                    [value]="gender.value">
-          {{ gender.viewValue }}
+    <mat-form-field class="almost-half-width margin-bottom-5">
+      <mat-select placeholder="Sex"
+                  formControlName="sex"
+                  required>
+        <mat-option *ngFor="let sex of sexes"
+                    [value]="sex.value">
+          {{ sex.viewValue }}
         </mat-option>
       </mat-select>
+      <mat-error *ngIf="!isSexValid()">
+        {{ sexErrorMessage }}
+      </mat-error>
     </mat-form-field>
   </div>
 
@@ -80,7 +118,9 @@
   <button mat-raised-button
           color="primary"
           class="full-width"
-          aria-label="sign up button">
+          aria-label="sign up button"
+          type="submit"
+          [disabled]="!form.valid">
     Sign Up
   </button>
 </form>

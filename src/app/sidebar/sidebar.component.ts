@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+/**
+ * Component that handles the sidebar.
+ */
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -10,14 +13,20 @@ export class SidebarComponent implements OnInit {
   @Input() loggedIn: boolean;
   @Output() sideMenuClick: EventEmitter<null> = new EventEmitter();
 
-  constructor() { }
+  /**
+   * Contructs the component and inject all parameters.
+   */
+  public constructor() { }
 
-  ngOnInit() {
+  /**
+   * Angular runs after creating the component.
+   */
+  public ngOnInit(): void {
   }
 
   /* Releases the sideMenuClick event up the chain
   */
-  emitSideMenuClick() {
+  public emitSideMenuClick(): void {
     this.sideMenuClick.emit();
   }
 

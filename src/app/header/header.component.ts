@@ -1,5 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+/**
+ * Component that handles the header.
+ */
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,14 +11,21 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Output() iconClick: EventEmitter<null> = new EventEmitter();
 
-  constructor() { }
+  /**
+   * Contructs the component and inject all parameters.
+   */
+  public constructor() { }
 
-  ngOnInit() {
+  /**
+   * Angular runs after creating the component.
+   */
+  public ngOnInit(): void {
   }
 
-  /* Releases the iconClick event up the chain
-  */
-  emitIconClick() {
+  /**
+   * Releases the iconClick event up the chain.
+   */
+  public emitIconClick(): void {
     this.iconClick.emit();
   }
 
