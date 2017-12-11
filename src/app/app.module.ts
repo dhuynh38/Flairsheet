@@ -14,6 +14,7 @@ import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -22,7 +23,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { ConfigService } from './services/config/config.service';
 import { UserService } from './services/user/user.service';
-
 /**
  * The root module that handles delcaring components, importing modules,
  * and providing services to components.
@@ -35,7 +35,8 @@ import { UserService } from './services/user/user.service';
     MainComponent,
     PageNotFoundComponent,
     SignupComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

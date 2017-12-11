@@ -14,12 +14,19 @@ A social media platform designed to provide anyone with the ability to show off 
 3) Or a banner should popup asking for installation.
 
 ### Useful Documentation ###
-Angular 2.0+ Documentation: https://angular.io/
-Angular Material (basic building blocks): https://material.angular.io/
-Flex Layout: https://github.com/angular/flex-layout/wiki/API-Documentation
-Flex Layout Conceptual: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-Useful Data Binding Angular 2.0: https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/12/12/simplifying-two-way-data-binding-in-angular-2.aspx
-Observables (different style of Promises): http://reactivex.io/rxjs/manual/overview.html
+1) Angular 2.0+ Documentation:
+https://angular.io/
+2) Angular Material (basic building blocks):
+https://material.angular.io/
+3) Flex Layout:
+https://github.com/angular/flex-layout/wiki/API-Documentation
+4) Flex Layout Conceptual:
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+5) Useful Data Binding Angular 2.0: https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/12/12/simplifying-two-way-data-binding-in-angular-2.aspx
+6) Observables (different style of Promises):
+http://reactivex.io/rxjs/manual/overview.html
+7) Database Query Functions:
+http://mongoosejs.com/docs/api.html
 
 ## Installation  and Setup Process ##
 

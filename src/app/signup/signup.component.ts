@@ -1,4 +1,5 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -40,6 +41,8 @@ export class SignupComponent implements OnInit {
    */
   public constructor(private adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
+    private _router: Router,
+    private _route: ActivatedRoute,
     private configService: ConfigService,
     private userService: UserService) {
   }
@@ -64,7 +67,7 @@ export class SignupComponent implements OnInit {
       usernameOriginal: '',
       email: '',
       password: '',
-      birthday: new Date(),
+      birthday: null,
       sex: '',
       verified: false
     };
@@ -99,8 +102,6 @@ export class SignupComponent implements OnInit {
       password: ['', [
         Validators.required,
         Validators.minLength(5),
-        Validators.maxLength(30),
-        Validators.pattern('[a-zA-Z0-9]*')
       ]],
       birthday: ['', [
         Validators.required,
@@ -214,10 +215,6 @@ export class SignupComponent implements OnInit {
       this.passwordErrorMessage = this.configService.ERROR_REQUIRED;
     } else if (passwordField.hasError('minlength')) {
       this.passwordErrorMessage = this.configService.ERROR_PASS_MIN_LENGTH;
-    } else if (passwordField.hasError('maxlength')) {
-      this.passwordErrorMessage = this.configService.ERROR_MAX_LENGTH_30;
-    } else if (passwordField.hasError('pattern')) {
-      this.passwordErrorMessage = this.configService.ERROR_PATTERN_B;
     } else {
       validity = true;
     }
@@ -325,11 +322,15 @@ export class SignupComponent implements OnInit {
     console.log('Registration successful.');
     console.log(this.user);
     this.userService.createUser(this.user).subscribe(
-      results => {
-        console.log(results);
+      res => {
+        this._router.navigate(['home'],  {
+          relativeTo: this._route,
+          replaceUrl: true
+        });
+        console.log(res);
       },
-      error => {
-        console.log(error);
+      err => {
+        console.log(err);
       }
     );
   }

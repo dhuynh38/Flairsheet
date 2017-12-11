@@ -2,28 +2,42 @@
 <p fxHide.gt-xs
    class="bold large-font-size">Login</p>
 <form [formGroup]="form"
-      (ngSubmit)="register(form)">
+      (ngSubmit)="login(form)">
+
+  <mat-error *ngIf="!loginInFailed"
+             class="center">
+    {{ loginErrorMessage }}
+  </mat-error>
 
   <mat-form-field class="full-width">
     <input name="email"
+           formControlName="email"
            matInput
            placeholder="email"
            required
            type="email">
+    <mat-error *ngIf="!isEmailValid()">
+    {{ emailErrorMessage }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <input name="password"
+           formControlName="password"
            matInput
            placeholder="password"
            required
            type="password">
+    <mat-error *ngIf="!isPasswordValid()">
+      {{ passwordErrorMessage }}
+    </mat-error>
   </mat-form-field>
 
   <button mat-raised-button
           color="primary"
           class="full-width"
-          aria-label="side menu">
+          aria-label="side menu"
+          [disabled]="!form.valid">
     Login
   </button>
 
