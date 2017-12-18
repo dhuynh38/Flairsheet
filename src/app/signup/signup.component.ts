@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import { User } from '../models/user';
 
 import { ConfigService } from '../services/config/config.service';
+import { SessionService } from '../services/session/session.service';
 import { UserService } from '../services/user/user.service';
 
 /**
@@ -24,26 +25,27 @@ export class SignupComponent implements OnInit {
   form: FormGroup;
   startDate: any;
   sexes: Array<Object>;
-  firstNameErrorMessage: String;
-  lastNameErrorMessage: String;
-  usernameErrorMessage: String;
-  emailErrorMessage: String;
-  passwordErrorMessage: String;
-  birthdayErrorMessage: String;
-  sexErrorMessage: String;
+  firstNameErrorMessage: string;
+  lastNameErrorMessage: string;
+  usernameErrorMessage: string;
+  emailErrorMessage: string;
+  passwordErrorMessage: string;
+  birthdayErrorMessage: string;
+  sexErrorMessage: string;
   minDate: any;
   maxDate: any;
 
   private user: User;
 
   /**
-   * Contructs the component and inject all parameters.
+   * Contructs the component and injects all parameters.
    */
   public constructor(private adapter: DateAdapter<any>,
     private formBuilder: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
     private configService: ConfigService,
+    private _sessionService: SessionService,
     private userService: UserService) {
   }
 
@@ -321,18 +323,16 @@ export class SignupComponent implements OnInit {
     this.user.verified = false;
     console.log('Registration successful.');
     console.log(this.user);
-    this.userService.createUser(this.user).subscribe(
-      res => {
-        this._router.navigate(['home'],  {
-          relativeTo: this._route,
-          replaceUrl: true
-        });
-        console.log(res);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    this.userService.createUser(this.user).subscribe((results) => {
+      this._sessionService.storeToken(results);
+      this._router.navigate(['home'],  {
+        relativeTo: this._route,
+        replaceUrl: true
+      });
+      console.log(results);
+    }, (error) => {
+      console.log(error);
+    });
   }
 
 

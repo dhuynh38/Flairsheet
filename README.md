@@ -67,7 +67,11 @@ If you're on Ubuntu, run the commands:
     For npm: 5.5.1 (Should be updated by now)
 
 ## Install Angular CLI ##
-DESCRIPTION: This is just a client that does everything for us and generates stuff for us based on commands. You build and run your front-end using this. When working, you can use the command `ng serve --poll=2000` to serve up a copy of your code to localhost:4200 in the browser. You can view your code live and every time you save a file after modifying, the website will refresh. Use `ng g <what should be generated> <name of file to be generated>` to generate components, services, and even modules. In the name paramete, you can put in a file path using a `/`. Finally, you can build using `ng build` or `ng build --prod`. Building for production adds in ahead-of-time compilation for javascript and other stuff to minimize the code to be deployed. Alot more details below.
+DESCRIPTION: This is just a client that does everything for us and generates stuff for us based on commands. You build and run your front-end using this. When working with the front-end, you can use the command `ng serve --poll=2000` to serve up a copy of your front-end code to localhost:4200 in the browser. You can view your code live and every time you save a file after modifying, the website will refresh. Use `ng g <what should be generated> <name of file to be generated>` to generate components, services, and even modules. In the name paramete, you can put in a file path using a `/`. Finally, you can build using `ng build` or `ng build --prod`. Building for production adds in ahead-of-time compilation for javascript and other stuff to minimize the code to be deployed. Alot more details below.
+
+**However, if you want to run the full app with the backend use, the command `npm run app`. It will give a live update of the entire app. Any changes on the front-end or back-end will reset the website and update on save of files.**
+
+If the above doesn't work, it is probably because there are too many files to watch and your system is set to watch only a certain number of files. On Ubuntu to increase number of watchers, run: `echo fs.inotify.max_user_watches=582222 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p`
 
 1) Run the command:
     sudo npm install -g @angular/cli
@@ -137,6 +141,7 @@ A lot of the extensions especially the themes are unnecessary for this particula
   mongo
 
 EXPLANATION: the mongod command starts up the database server and allow you to connect to the database. The mongo comamnd opens up a terminal for the database that allows you to run commands on the database and what is stored in the database itself. Basically, allows you to make queries.
+This is an explanation of how to use mongodb locally. However, we will use a free database for testing purposes that everyone will have access to. See MongoCompass installation for further explanation.
 
 ## Pull down the respository ##
 1) Go to the flairsheet repo.
@@ -180,11 +185,26 @@ https://docs.mongodb.com/compass/master/install/#download-compass
 
 5) Make sure your MongoDB sever is up and running.
 
-6) Fill in the following information:
+6a) Fill in the following information if you are using the database locally (DON'T USE THIS):
   Hostname: localhost
   Port: 27017
 
+6b) Fill in the following information if you are using the database hosted by mLab:
+  Hostname: ds161146.mlab.com
+  Port: 61146
+  Authentication: Username/Password
+  Username: flairadmin
+  Password: 123456789
+  Authentication Database: flairsheet
+  Replica Set Name: (Empty)
+  Read Preference: Primary
+  SSL: (Empty)
+  SSH Tunnel: (Empty)
+  Favorite Name: (Empty)
+
 7) Click connect
+
+IMPORTANT: How the database is going to work is we're all going to connect to the same database and use it so everyone will use the same data for consistency. 6b provides the information for login into mLab's database and 6a provides the information for login into your own local database. For development, we're going to share the mLab database. However, when the app drops, it's database will be hosted locally.
 
 ## Connecting to the server ##
 DESCRIPTION: This is the DigitalOcean remote access server that we're using to deploy the server and client. You can ssh into this server with your computer using the ssh below. This
@@ -270,6 +290,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io). You don't have to do any testing since we are a small group and can just ask each other when something goes wrong.
 
 ## SERVER: ##
+### Generate a RSA2048 Key with SSH256 Hashing ###
+openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout server.key -out server.crt
 ### MongoDB For The Server Only: ###
 #### Start Mongo Server ####
 sudo systemctl start mongod

@@ -18,87 +18,87 @@ export class ConfigService {
   private _ERROR_LOGIN_FAILED = 'Invalid email or password';
 
   /**
-   * Contructs the service and inject all parameters.
+   * Contructs the service and injects all parameters.
    */
   constructor() { }
 
   /**
    * Getter for ERROR_REQUIRED.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_REQUIRED(): String {
+  public get ERROR_REQUIRED(): string {
     return this._ERROR_REQUIRED;
   }
 
   /**
    * Getter for ERROR_MAX_LENGTH_20.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_MAX_LENGTH_20(): String {
+  public get ERROR_MAX_LENGTH_20(): string {
     return this._ERROR_MAX_LENGTH_20;
   }
 
   /**
    * Getter for ERROR_MAX_LENGTH_40.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_MAX_LENGTH_40(): String {
+  public get ERROR_MAX_LENGTH_40(): string {
     return this._ERROR_MAX_LENGTH_40;
   }
 
   /**
    * Getter for ERROR_PASS_MIN_LENGTH.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_PASS_MIN_LENGTH(): String {
+  public get ERROR_PASS_MIN_LENGTH(): string {
     return this._ERROR_PASS_MIN_LENGTH;
   }
 
   /**
    * Getter for ERROR_EMAIL_STRUCTURE.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_EMAIL_STRUCTURE(): String {
+  public get ERROR_EMAIL_STRUCTURE(): string {
     return this._ERROR_EMAIL_STRUCTURE;
   }
 
   /**
    * Getter for ERROR_PATTERN_A.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_PATTERN_A(): String {
+  public get ERROR_PATTERN_A(): string {
     return this._ERROR_PATTERN_A;
   }
 
   /**
    * Getter for ERROR_PATTERN_B.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_PATTERN_B(): String {
+  public get ERROR_PATTERN_B(): string {
     return this._ERROR_PATTERN_B;
   }
 
   /**
    * Getter for ERROR_DATE_FORMAT.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_DATE_FORMAT(): String {
+  public get ERROR_DATE_FORMAT(): string {
     return this._ERROR_DATE_FORMAT;
   }
 
   /**
    * Getter for ERROR_DATE_RANGE.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_DATE_RANGE(): String {
+  public get ERROR_DATE_RANGE(): string {
     return this._ERROR_DATE_RANGE;
   }
 
   /**
    * Getter for ERROR_LOGIN_FAILED.
-   * @returns String the string constant.
+   * @returns string the string constant.
    */
-  public get ERROR_LOGIN_FAILED(): String {
+  public get ERROR_LOGIN_FAILED(): string {
     return this._ERROR_LOGIN_FAILED;
   }
 

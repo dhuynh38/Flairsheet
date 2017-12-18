@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SessionService } from './services/session/session.service';
+
 /**
  * The root component that contains all other components.
  */
@@ -10,20 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  private _userLoggedIn: boolean;
+  /**
+   * Contructs the component and injects all parameters.
+   */
+  public constructor(private sessionService: SessionService) {
+  }
 
   /**
    * Angular runs after creating the component.
    */
   public ngOnInit(): void {
-    this._userLoggedIn = false;
   }
 
   /**
-   * Getter for _userLoggedIn.
+   * Checks whether the user is logged in.
+   * @returns boolean true if the user is logged in.
    */
-  public get userLoggedIn(): boolean {
-    return this._userLoggedIn;
+  public isUserLoggedIn(): boolean {
+    return this.sessionService.isUserLoggedIn();
   }
 
 }

@@ -9,6 +9,7 @@ debug('flairsheet:server');
 const port = normalizePort(process.env.PORT || 3000);
 Server.set('port', port);
 console.log(`Server listening on port ${port}`);
+console.log('Connected to address: http://localhost:3000/');
 
 /* Creates server and start listening */
 const server = http.createServer(Server);

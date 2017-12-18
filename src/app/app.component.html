@@ -11,7 +11,7 @@
                  class="recolor-background"
                  fixedInViewport="true"
                  fixedTopGap="42">
-      <app-sidebar [loggedIn]="userLoggedIn"
+      <app-sidebar [loggedIn]="isUserLoggedIn()"
                    (sideMenuClick)="sidenav.toggle()"></app-sidebar>
     </mat-sidenav>
     <mat-sidenav-content class="margin-top-42">

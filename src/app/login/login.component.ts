@@ -5,6 +5,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 import { User } from '../models/user';
 
 import { ConfigService } from '../services/config/config.service';
+import { SessionService } from '../services/session/session.service';
 import { UserService } from '../services/user/user.service';
 
 /**
@@ -18,19 +19,20 @@ import { UserService } from '../services/user/user.service';
 export class LoginComponent implements OnInit {
 
   private _form: FormGroup;
-  private _emailErrorMessage;
-  private _passwordErrorMessage;
-  private _loginErrorMessage: String;
+  private _emailErrorMessage: string;
+  private _passwordErrorMessage: string;
+  private _loginErrorMessage: string;
   private _user: User;
-  private _loginInFailed: Boolean;
+  private _loginInFailed: boolean;
 
   /**
-   * Contructs the component and inject all parameters.
+   * Contructs the component and injects all parameters.
    */
   public constructor(private _formBuilder: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
     private _configService: ConfigService,
+    private _sessionService: SessionService,
     private _userService: UserService) {
   }
 
@@ -64,42 +66,42 @@ export class LoginComponent implements OnInit {
 
   /**
    * Getter for _loginInFailed.
-   * @returns Boolean true if user failed to log in
+   * @returns boolean true if user failed to log in
    */
-  public get loginInFailed(): Boolean {
+  public get loginInFailed(): boolean {
     return this._loginInFailed;
   }
 
   /**
    * Getter for loginErrorMessage.
-   * @returns String error message when login failed
+   * @returns string error message when login failed
    */
-  public get loginErrorMessage(): String {
+  public get loginErrorMessage(): string {
     return this._loginErrorMessage;
   }
 
   /**
    * Getter for emailErrorMessage.
-   * @returns String error message when email field is invalid
+   * @returns string error message when email field is invalid
    */
-  public get emailErrorMessage(): String {
+  public get emailErrorMessage(): string {
     return this._emailErrorMessage;
   }
 
   /**
    * Getter for passwordErrorMessage.
-   * @returns String error message when password field is invalid
+   * @returns string error message when password field is invalid
    */
-  public get passwordErrorMessage(): String {
+  public get passwordErrorMessage(): string {
     return this._passwordErrorMessage;
   }
 
   /**
    * Checks whether the Email input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Email field is valid
+   * @returns boolean true if Email field is valid
    */
-  public isEmailValid(): Boolean {
+  public isEmailValid(): boolean {
     const emailField = this._form.controls['email'];
     let validity = false;
 
@@ -115,9 +117,9 @@ export class LoginComponent implements OnInit {
   /**
    * Checks whether the Password input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Password field is valid
+   * @returns boolean true if Password field is valid
    */
-  public isPasswordValid(): Boolean {
+  public isPasswordValid(): boolean {
     const passwordField = this.form.controls['password'];
     let validity = false;
 
@@ -130,7 +132,7 @@ export class LoginComponent implements OnInit {
     return validity;
   }
 
-    /**
+  /**
    * Creates the form by using FormBuilder to initialize
    * FormGroup.
    */
@@ -146,28 +148,22 @@ export class LoginComponent implements OnInit {
   }
 
   /**
-   *
+   * Logs the user into the app.
    * @param form the user inputs
    */
   public login(form: FormGroup): void {
-    console.log('Login successful.');
-    console.log(form.value);
     this._user.email = this.form.get('email').value;
     this._user.password = this.form.get('password').value;
-    this._userService.loginUser(this._user).subscribe(
-      results => {
-        this._loginInFailed = true;
-        this._user = results;
-        this._router.navigate(['home'],  {
-          relativeTo: this._route
-        });
-        console.log(results);
-      },
-      error => {
-        this._loginInFailed = false;
-        console.log(error);
-      }
-    );
+    this._userService.loginUser(this._user).subscribe((results) => {
+      this._loginInFailed = true;
+      this._sessionService.storeToken(results);
+      this._router.navigate(['home'],  {
+        relativeTo: this._route
+      });
+    }, (error) => {
+      this._loginInFailed = false;
+      console.log(error);
+    });
   }
 
 }

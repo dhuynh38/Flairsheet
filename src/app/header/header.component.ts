@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   @Output() iconClick: EventEmitter<null> = new EventEmitter();
 
   /**
-   * Contructs the component and inject all parameters.
+   * Contructs the component and injects all parameters.
    */
   public constructor() { }
 

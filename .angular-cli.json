@@ -50,5 +50,8 @@
     "styleExt": "scss",
     "component": {
     }
+  },
+  "warnings": {
+    "typescriptMismatch": false
   }
 }

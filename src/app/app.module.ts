@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +22,8 @@ import { SignupComponent } from './signup/signup.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { ConfigService } from './services/config/config.service';
+import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
+import { SessionService } from './services/session/session.service';
 import { UserService } from './services/user/user.service';
 /**
  * The root module that handles delcaring components, importing modules,
@@ -50,7 +52,13 @@ import { UserService } from './services/user/user.service';
   ],
   providers: [
     ConfigService,
-    UserService
+    SessionService,
+    UserService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

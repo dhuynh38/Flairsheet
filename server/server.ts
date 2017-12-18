@@ -3,7 +3,9 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as compression from 'compression';
 import * as cors from 'cors';
+import * as expressJwt from 'express-jwt';
 import * as express from 'express';
+import * as fs from 'fs';
 import * as helmet from 'helmet';
 import * as logger from 'morgan';
 import * as mongoose from 'mongoose';
@@ -22,13 +24,32 @@ class Server {
 
   private _app: express.Application;
   private _config: Config;
+  private _authenticator: expressJwt.RequestHandler;
+  private _rsaPublicKey: Buffer;
 
-  constructor() {
+  /**
+   * Contructs the component and injects all parameters.
+   */
+  public constructor() {
     this._app = express();
     this._config = new Config();
+    this._rsaPublicKey = fs.readFileSync(`${__dirname}/security/server.crt`);
+    this._authenticator = expressJwt({
+      secret: this._rsaPublicKey,
+      algorithms: ['RS256']
+    }).unless({
+      path: [
+        /* Allow calls without /api, /api/user/create/, and api/user/login */
+        /(^\/(?!(api)).*$)|(^\/api\/user\/((create)|(login))$)/i
+      ]
+    });
     this.setup();
   }
 
+  /**
+   * Getter for the app.
+   * @returns express.Application the express app
+   */
   public get app() {
     return this._app;
   }
@@ -40,17 +61,14 @@ class Server {
   private setup(): void {
     /* Set up mongo db connection */
     (<any>mongoose).Promise = bluebird;
-    mongoose
-      .connect(this._config.mongoUrl || process.env.PORT, {
-        useMongoClient: true,
-        promiseLibrary: bluebird
-      })
-      .then(() => {
-        console.log('Connected successfully to database');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    mongoose.connect(this._config.mongoUrlLab || process.env.PORT, {
+      useMongoClient: true,
+      promiseLibrary: bluebird
+    }).then(() => {
+      console.log('Connected successfully to lab database.');
+    }).catch((err) => {
+      console.log(err);
+    });
 
     /* Set up all the middlewares */
     this._app.use(bodyParser.json());
@@ -62,6 +80,8 @@ class Server {
     this._app.use(helmet());
     this._app.use(logger('dev'));
     this._app.use(cors());
+    this._app.use(this._authenticator);
+    this._app.use(this.errorHandler);
 
     this._app.use(express.static(path.join(__dirname, '../app')));
     this.routes();
@@ -76,6 +96,29 @@ class Server {
       res.sendFile(path.join(__dirname, '../app/index.html'));
     });
   }
+
+  /**
+   * Handles all the errors coming from the express server that has not
+   * been handles already.
+   * @param err the error received
+   * @param req the request that caused the error
+   * @param res the response to be sent back to the client
+   * @param next the next function to be executed
+   */
+  private errorHandler(err: any, req: express.Request,
+    res: express.Response, next: express.NextFunction): void {
+    console.log('ERROR SENT');
+    if (err.name === 'UnauthorizedError') {
+      res.status(401).json({
+        message: 'Error: Unauthorized Access.'
+      });
+    } else {
+      res.status(500).json({
+        message: 'Error: Unknown'
+      });
+    }
+  }
+
 }
 
 export default new Server().app;

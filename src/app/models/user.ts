@@ -2,13 +2,13 @@
  * Model representing a user.
  */
 export interface User {
-  firstname: String;
-  lastname: String;
-  username: String;
-  usernameOriginal: String;
-  email: String;
-  password: String;
+  firstname: string;
+  lastname: string;
+  username: string;
+  usernameOriginal: string;
+  email: string;
+  password: string;
   birthday: Date;
-  sex: String;
+  sex: string;
   verified: boolean;
 }
