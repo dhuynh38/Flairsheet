@@ -5,6 +5,7 @@ import { ActivatedRoute, Router} from '@angular/router';
 import { User } from '../models/user';
 
 import { ConfigService } from '../services/config/config.service';
+import { RedirectService } from '../services/redirect/redirect.service';
 import { SessionService } from '../services/session/session.service';
 import { UserService } from '../services/user/user.service';
 
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute,
     private _configService: ConfigService,
+    private _redirectService: RedirectService,
     private _sessionService: SessionService,
     private _userService: UserService) {
   }
@@ -58,7 +60,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * Getter for _form.
-   * @returns FormGroup the form to sign in with
+   * @returns {FormGroup} the form to sign in with
    */
   public get form(): FormGroup {
     return this._form;
@@ -66,7 +68,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * Getter for _loginInFailed.
-   * @returns boolean true if user failed to log in
+   * @returns {boolean} true if user failed to log in
    */
   public get loginInFailed(): boolean {
     return this._loginInFailed;
@@ -74,7 +76,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * Getter for loginErrorMessage.
-   * @returns string error message when login failed
+   * @returns {string} error message when login failed
    */
   public get loginErrorMessage(): string {
     return this._loginErrorMessage;
@@ -82,7 +84,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * Getter for emailErrorMessage.
-   * @returns string error message when email field is invalid
+   * @returns {string} error message when email field is invalid
    */
   public get emailErrorMessage(): string {
     return this._emailErrorMessage;
@@ -90,7 +92,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * Getter for passwordErrorMessage.
-   * @returns string error message when password field is invalid
+   * @returns {string} error message when password field is invalid
    */
   public get passwordErrorMessage(): string {
     return this._passwordErrorMessage;
@@ -99,7 +101,7 @@ export class LoginComponent implements OnInit {
   /**
    * Checks whether the Email input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns boolean true if Email field is valid
+   * @returns {boolean} true if Email field is valid
    */
   public isEmailValid(): boolean {
     const emailField = this._form.controls['email'];
@@ -117,7 +119,7 @@ export class LoginComponent implements OnInit {
   /**
    * Checks whether the Password input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns boolean true if Password field is valid
+   * @returns {boolean} true if Password field is valid
    */
   public isPasswordValid(): boolean {
     const passwordField = this.form.controls['password'];
@@ -149,7 +151,7 @@ export class LoginComponent implements OnInit {
 
   /**
    * Logs the user into the app.
-   * @param form the user inputs
+   * @param {FormGroup} form the user inputs
    */
   public login(form: FormGroup): void {
     this._user.email = this.form.get('email').value;
@@ -157,9 +159,12 @@ export class LoginComponent implements OnInit {
     this._userService.loginUser(this._user).subscribe((results) => {
       this._loginInFailed = true;
       this._sessionService.storeToken(results);
-      this._router.navigate(['home'],  {
-        relativeTo: this._route
-      });
+      if (this._redirectService.redirectUrl !== null) {
+        this._router.navigate([this._redirectService.redirectUrl]);
+        this._redirectService.redirectUrl = null;
+      } else {
+        this._router.navigate(['home']);
+      }
     }, (error) => {
       this._loginInFailed = false;
       console.log(error);

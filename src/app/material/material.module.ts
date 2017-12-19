@@ -14,6 +14,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+/**
+ * Module for handling all the imports of anglar material modules.
+ */
 @NgModule({
   imports: [
     MatButtonModule,

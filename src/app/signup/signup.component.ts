@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import { User } from '../models/user';
 
 import { ConfigService } from '../services/config/config.service';
+import { RedirectService } from '../services/redirect/redirect.service';
 import { SessionService } from '../services/session/session.service';
 import { UserService } from '../services/user/user.service';
 
@@ -22,31 +23,32 @@ import { UserService } from '../services/user/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  form: FormGroup;
-  startDate: any;
-  sexes: Array<Object>;
-  firstNameErrorMessage: string;
-  lastNameErrorMessage: string;
-  usernameErrorMessage: string;
-  emailErrorMessage: string;
-  passwordErrorMessage: string;
-  birthdayErrorMessage: string;
-  sexErrorMessage: string;
-  minDate: any;
-  maxDate: any;
+  private _form: FormGroup;
+  private _startDate: moment.Moment;
+  private _sexes: Array<Object>;
+  private _firstNameErrorMessage: string;
+  private _lastNameErrorMessage: string;
+  private _usernameErrorMessage: string;
+  private _emailErrorMessage: string;
+  private _passwordErrorMessage: string;
+  private _birthdayErrorMessage: string;
+  private _sexErrorMessage: string;
+  private _minDate: moment.Moment;
+  private _maxDate: moment.Moment;
 
   private user: User;
 
   /**
    * Contructs the component and injects all parameters.
    */
-  public constructor(private adapter: DateAdapter<any>,
-    private formBuilder: FormBuilder,
+  public constructor(private _adapter: DateAdapter<any>,
+    private _formBuilder: FormBuilder,
     private _router: Router,
     private _route: ActivatedRoute,
-    private configService: ConfigService,
+    private _configService: ConfigService,
+    private _redirectService: RedirectService,
     private _sessionService: SessionService,
-    private userService: UserService) {
+    private _userService: UserService) {
   }
 
   /**
@@ -54,14 +56,14 @@ export class SignupComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.createForm();
-    this.startDate = moment('1990-01-01');
-    this.sexes = [
+    this._startDate = moment('1990-01-01');
+    this._sexes = [
       {value: 'male', viewValue: 'Male'},
       {value: 'female', viewValue: 'Female'},
     ];
-    this.adapter.setLocale(navigator.language || 'en-US');
-    this.maxDate = moment().subtract(13, 'years');
-    this.minDate = moment().subtract(120, 'years');
+    this._adapter.setLocale(navigator.language || 'en-US');
+    this._maxDate = moment().subtract(13, 'years');
+    this._minDate = moment().subtract(120, 'years');
     this.user = {
       firstname: '',
       lastname: '',
@@ -76,11 +78,107 @@ export class SignupComponent implements OnInit {
   }
 
   /**
+   * Getter for form.
+   * @returns {FormGroup} the form the user is filling out
+   */
+  public get form(): FormGroup {
+    return this._form;
+  }
+
+  /**
+   * Getter for startDate.
+   * @returns {moment.Moment} the start date for the calendar
+   */
+  public get startDate(): moment.Moment {
+    return this._startDate;
+  }
+
+  /**
+   * Getter for sexes.
+   * @returns {Array<Object>} the array containing all slectable sexes
+   */
+  public get sexes(): Array<Object> {
+    return this._sexes;
+  }
+
+  /**
+   * Getter for firstNameErrorMessage.
+   * @returns {string} the error message for first name field.
+   */
+  public get firstNameErrorMessage(): string {
+    return this._firstNameErrorMessage;
+  }
+
+  /**
+   * Getter for lastNameErrorMessage.
+   * @returns {string} the error message for last name field.
+   */
+  public get lastNameErrorMessage(): string {
+    return this._lastNameErrorMessage;
+  }
+
+  /**
+   * Getter for usernameErrorMessage.
+   * @returns {string} the error message for username field.
+   */
+  public get usernameErrorMessage(): string {
+    return this._usernameErrorMessage;
+  }
+
+  /**
+   * Getter for emailErrorMessage.
+   * @returns {string} the error message for email field.
+   */
+  public get emailErrorMessage(): string {
+    return this._emailErrorMessage;
+  }
+
+  /**
+   * Getter for passwordErrorMessage.
+   * @returns {string} the error message for password field.
+   */
+  public get passwordErrorMessage(): string {
+    return this._passwordErrorMessage;
+  }
+
+  /**
+   * Getter for birthdayErrorMessage.
+   * @returns {string} the error message for birthday field.
+   */
+  public get birthdayErrorMessage(): string {
+    return this._birthdayErrorMessage;
+  }
+
+  /**
+   * Getter for sexErrorMessage.
+   * @returns {string} the error message for sex field.
+   */
+  public get sexErrorMessage(): string {
+    return this._sexErrorMessage;
+  }
+
+  /**
+   * Getter for minDate.
+   * @returns {moment.Moment} the min date for the calendar
+   */
+  public get minDate(): moment.Moment {
+    return this._minDate;
+  }
+
+  /**
+   * Getter for maxDate.
+   * @returns {moment.Moment} the max date for the calendar
+   */
+  public get maxDate(): moment.Moment {
+    return this._maxDate;
+  }
+
+  /**
    * Creates the form by using FormBuilder to initialize
    * FormGroup.
    */
   private createForm(): void {
-    this.form = this.formBuilder.group({
+    this._form = this._formBuilder.group({
       firstname: ['', [
         Validators.required,
         Validators.maxLength(20),
@@ -119,18 +217,18 @@ export class SignupComponent implements OnInit {
   /**
    * Checks whether the First Name input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if First Name field is valid
+   * @returns {boolean} true if First Name field is valid
    */
-  public isFirstNameValid(): Boolean {
-    const firstnameField = this.form.controls['firstname'];
+  public isFirstNameValid(): boolean {
+    const firstnameField = this._form.controls['firstname'];
     let validity = false;
 
     if (firstnameField.hasError('required')) {
-      this.firstNameErrorMessage = this.configService.ERROR_REQUIRED;
+      this._firstNameErrorMessage = this._configService.ERROR_REQUIRED;
     } else if (firstnameField.hasError('maxlength')) {
-      this.firstNameErrorMessage = this.configService.ERROR_MAX_LENGTH_20;
+      this._firstNameErrorMessage = this._configService.ERROR_MAX_LENGTH_20;
     } else if (firstnameField.hasError('pattern')) {
-      this.firstNameErrorMessage = this.configService.ERROR_PATTERN_A;
+      this._firstNameErrorMessage = this._configService.ERROR_PATTERN_A;
     } else {
       validity = true;
     }
@@ -141,18 +239,18 @@ export class SignupComponent implements OnInit {
   /**
    * Checks whether the Last Name input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Last Name field is valid
+   * @returns {boolean} true if Last Name field is valid
    */
-  public isLastNameValid(): Boolean {
-    const lastnameField = this.form.controls['lastname'];
+  public isLastNameValid(): boolean {
+    const lastnameField = this._form.controls['lastname'];
     let validity = false;
 
     if (lastnameField.hasError('required')) {
-      this.lastNameErrorMessage = this.configService.ERROR_REQUIRED;
+      this._lastNameErrorMessage = this._configService.ERROR_REQUIRED;
     } else if (lastnameField.hasError('maxlength')) {
-      this.lastNameErrorMessage = this.configService.ERROR_MAX_LENGTH_20;
+      this._lastNameErrorMessage = this._configService.ERROR_MAX_LENGTH_20;
     } else if (lastnameField.hasError('pattern')) {
-      this.lastNameErrorMessage = this.configService.ERROR_PATTERN_A;
+      this._lastNameErrorMessage = this._configService.ERROR_PATTERN_A;
     } else {
       validity = true;
     }
@@ -163,18 +261,18 @@ export class SignupComponent implements OnInit {
   /**
    * Checks whether the Username input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Username field is valid
+   * @returns {boolean} true if Username field is valid
    */
-  public isUsernameValid(): Boolean {
-    const usernameField = this.form.controls['username'];
+  public isUsernameValid(): boolean {
+    const usernameField = this._form.controls['username'];
     let validity = false;
 
     if (usernameField.hasError('required')) {
-      this.usernameErrorMessage = this.configService.ERROR_REQUIRED;
+      this._usernameErrorMessage = this._configService.ERROR_REQUIRED;
     } else if (usernameField.hasError('maxlength')) {
-      this.usernameErrorMessage = this.configService.ERROR_MAX_LENGTH_20;
+      this._usernameErrorMessage = this._configService.ERROR_MAX_LENGTH_20;
     } else if (usernameField.hasError('pattern')) {
-      this.usernameErrorMessage = this.configService.ERROR_PATTERN_B;
+      this._usernameErrorMessage = this._configService.ERROR_PATTERN_B;
     } else {
       validity = true;
     }
@@ -185,18 +283,18 @@ export class SignupComponent implements OnInit {
   /**
    * Checks whether the Email input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Email field is valid
+   * @returns {boolean} true if Email field is valid
    */
-  public isEmailValid(): Boolean {
-    const emailField = this.form.controls['email'];
+  public isEmailValid(): boolean {
+    const emailField = this._form.controls['email'];
     let validity = false;
 
     if (emailField.hasError('required')) {
-      this.emailErrorMessage = this.configService.ERROR_REQUIRED;
+      this._emailErrorMessage = this._configService.ERROR_REQUIRED;
     } else if (emailField.hasError('maxlength')) {
-      this.emailErrorMessage = this.configService.ERROR_MAX_LENGTH_40;
+      this._emailErrorMessage = this._configService.ERROR_MAX_LENGTH_40;
     } else if (emailField.hasError('email')) {
-      this.emailErrorMessage = this.configService.ERROR_EMAIL_STRUCTURE;
+      this._emailErrorMessage = this._configService.ERROR_EMAIL_STRUCTURE;
     } else {
       validity = true;
     }
@@ -207,16 +305,16 @@ export class SignupComponent implements OnInit {
   /**
    * Checks whether the Password input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Password field is valid
+   * @returns {boolean} true if Password field is valid
    */
-  public isPasswordValid(): Boolean {
-    const passwordField = this.form.controls['password'];
+  public isPasswordValid(): boolean {
+    const passwordField = this._form.controls['password'];
     let validity = false;
 
     if (passwordField.hasError('required')) {
-      this.passwordErrorMessage = this.configService.ERROR_REQUIRED;
+      this._passwordErrorMessage = this._configService.ERROR_REQUIRED;
     } else if (passwordField.hasError('minlength')) {
-      this.passwordErrorMessage = this.configService.ERROR_PASS_MIN_LENGTH;
+      this._passwordErrorMessage = this._configService.ERROR_PASS_MIN_LENGTH;
     } else {
       validity = true;
     }
@@ -227,18 +325,18 @@ export class SignupComponent implements OnInit {
   /**
    * Checks whether the Date of Birth input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Date of Birth field is valid
+   * @returns {boolean} true if Date of Birth field is valid
    */
-  public isBirthdayValid(): Boolean {
-    const birthdayField = this.form.controls['birthday'];
+  public isBirthdayValid(): boolean {
+    const birthdayField = this._form.controls['birthday'];
     let validity = false;
 
     if (birthdayField.hasError('required')) {
-      this.birthdayErrorMessage = this.configService.ERROR_REQUIRED;
+      this._birthdayErrorMessage = this._configService.ERROR_REQUIRED;
     } else if (birthdayField.hasError('dateformat')) {
-      this.birthdayErrorMessage = this.configService.ERROR_DATE_FORMAT;
+      this._birthdayErrorMessage = this._configService.ERROR_DATE_FORMAT;
     } else if (birthdayField.hasError('daterange')) {
-      this.birthdayErrorMessage = this.configService.ERROR_DATE_RANGE;
+      this._birthdayErrorMessage = this._configService.ERROR_DATE_RANGE;
     } else {
       validity = true;
     }
@@ -249,14 +347,14 @@ export class SignupComponent implements OnInit {
   /**
    * Checks whether the Sex input field has any
    * errors and if it does, set the error message accordingly.
-   * @returns Boolean true if Sex field is valid
+   * @returns {boolean} true if Sex field is valid
    */
-  public isSexValid(): Boolean {
-    const sexField = this.form.controls['sex'];
+  public isSexValid(): boolean {
+    const sexField = this._form.controls['sex'];
     let validity = false;
 
     if (sexField.hasError('required')) {
-      this.sexErrorMessage = this.configService.ERROR_REQUIRED;
+      this._sexErrorMessage = this._configService.ERROR_REQUIRED;
     } else {
       validity = true;
     }
@@ -267,7 +365,7 @@ export class SignupComponent implements OnInit {
   /**
    * Returns a validator to checks whether the Date is
    * in a valid format.
-   * @returns ValidatorFn a validator function to validate the date format
+   * @returns {ValidatorFn} a validator function to validate the date format
    */
   private dateFormatValidator(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} => {
@@ -291,16 +389,16 @@ export class SignupComponent implements OnInit {
   /**
    * Returns a validator to check whether the Date is
    * within the valid dates.
-   * @returns ValidatorFn a validator function to validate the date range
+   * @returns {ValidatorFn} a validator function to validate the date range
    */
   private dateRangeValidator(): ValidatorFn {
     return (control: AbstractControl): {[key: string]: any} => {
       let withinRange = false;
-      this.maxDate = moment().subtract(13, 'years');
-      this.minDate = moment().subtract(120, 'years');
+      this._maxDate = moment().subtract(13, 'years');
+      this._minDate = moment().subtract(120, 'years');
 
       if (control.value) {
-        withinRange = control.value.isBetween(this.minDate, this.maxDate);
+        withinRange = control.value.isBetween(this._minDate, this._maxDate);
       }
       return !withinRange ? {'daterange': {value: control.value}} : null;
     };
@@ -310,25 +408,26 @@ export class SignupComponent implements OnInit {
   /**
    * Registers a user in the database based on the values of
    * the inputs.
+   * @param {FormGroup} form the form coming from the user
    */
   public register(form: FormGroup): void {
-    this.user.firstname = this.form.get('firstname').value;
-    this.user.lastname = this.form.get('lastname').value;
-    this.user.usernameOriginal = this.form.get('username').value;
+    this.user.firstname = this._form.get('firstname').value;
+    this.user.lastname = this._form.get('lastname').value;
+    this.user.usernameOriginal = this._form.get('username').value;
     this.user.username = this.user.usernameOriginal.toLowerCase();
-    this.user.email = this.form.get('email').value;
-    this.user.password = this.form.get('password').value;
-    this.user.birthday = this.form.get('birthday').value.toDate();
-    this.user.sex = this.form.get('sex').value;
+    this.user.email = this._form.get('email').value;
+    this.user.password = this._form.get('password').value;
+    this.user.birthday = this._form.get('birthday').value.toDate();
+    this.user.sex = this._form.get('sex').value;
     this.user.verified = false;
-    console.log('Registration successful.');
-    console.log(this.user);
-    this.userService.createUser(this.user).subscribe((results) => {
+    this._userService.createUser(this.user).subscribe((results) => {
       this._sessionService.storeToken(results);
-      this._router.navigate(['home'],  {
-        relativeTo: this._route,
-        replaceUrl: true
-      });
+      if (this._redirectService.redirectUrl !== null) {
+        this._router.navigate([this._redirectService.redirectUrl]);
+        this._redirectService.redirectUrl = null;
+      } else {
+        this._router.navigate(['home']);
+      }
       console.log(results);
     }, (error) => {
       console.log(error);

@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class PageNotFoundComponent implements OnInit {
 
   /**
-   * Contructs the component and inject all parameters.
+   * Contructs the component and injects all parameters.
    */
   public constructor() { }
 

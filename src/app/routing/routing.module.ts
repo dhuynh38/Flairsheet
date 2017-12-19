@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { routes } from './routes';
 
+/**
+ * Module to set up the routing system for the app.
+ */
 @NgModule({
   imports: [
     CommonModule,

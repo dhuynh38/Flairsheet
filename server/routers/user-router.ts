@@ -30,6 +30,7 @@ class UserRouter {
 
   /**
    * Getter for router.
+   * @returns {Router} the server router
    */
   public get router(): Router {
     return this._router;
@@ -38,7 +39,7 @@ class UserRouter {
   /**
    * Creates and signs a token with the private key for a
    * user based on the id.
-   * @param id the _id of the user to create a token for
+   * @param {string} id the _id of the user to create a token for
    */
   private createTokenKey(id: string): Buffer {
     return jwt.sign(
@@ -54,8 +55,8 @@ class UserRouter {
 
   /**
    * GET: get all the users in the database.
-   * @param req the request itself coming from the user
-   * @param res the response to be sent to the user
+   * @param {Request} req the request itself coming from the user
+   * @param {Response} res the response to be sent to the user
    */
   private getUsers(req: Request, res: Response): void {
     User.find({}).then((data) => {
@@ -71,8 +72,8 @@ class UserRouter {
 
   /**
    * POST: create a new user in the database.
-   * @param req the request itself coming from the user
-   * @param res the response to be sent to the user
+   * @param {Request} req the request itself coming from the user
+   * @param {Response} res the response to be sent to the user
    */
   private createUser(req: Request, res: Response): void {
     const firstname = req.body.firstname;
@@ -119,8 +120,8 @@ class UserRouter {
 
   /**
    * POST: login a user into the app.
-   * @param req the request itself coming from the user
-   * @param res the response to be sent to the user
+   * @param {Request} req the request itself coming from the user
+   * @param {Response} res the response to be sent to the user
    */
   private loginUser(req: Request, res: Response): void {
     User.findOne({ email: req.body.email.toLowerCase() }).then((data) => {
@@ -134,7 +135,7 @@ class UserRouter {
           });
         } else {
           res.status(401).json({
-            message: 'Error: Invalid Password.'
+            message: 'Error:  Invalid Email Or Password.'
           });
         }
       }).catch((err) => {
@@ -143,8 +144,8 @@ class UserRouter {
         });
       });
     }).catch((err) => {
-      res.status(500).json({
-        message: 'Error: Cannot Find User.'
+      res.status(401).json({
+        message: 'Error: Invalid Email Or Password.'
       });
     });
   }

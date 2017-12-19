@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
 
   /**
    * Checks whether the user is logged in.
-   * @returns boolean true if the user is logged in.
+   * @returns {boolean} true if the user is logged in.
    */
   public isUserLoggedIn(): boolean {
     return this.sessionService.isUserLoggedIn();

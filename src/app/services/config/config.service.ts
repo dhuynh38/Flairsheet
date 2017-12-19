@@ -24,7 +24,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_REQUIRED.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_REQUIRED(): string {
     return this._ERROR_REQUIRED;
@@ -32,7 +32,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_MAX_LENGTH_20.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_MAX_LENGTH_20(): string {
     return this._ERROR_MAX_LENGTH_20;
@@ -40,7 +40,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_MAX_LENGTH_40.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_MAX_LENGTH_40(): string {
     return this._ERROR_MAX_LENGTH_40;
@@ -48,7 +48,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_PASS_MIN_LENGTH.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_PASS_MIN_LENGTH(): string {
     return this._ERROR_PASS_MIN_LENGTH;
@@ -56,7 +56,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_EMAIL_STRUCTURE.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_EMAIL_STRUCTURE(): string {
     return this._ERROR_EMAIL_STRUCTURE;
@@ -64,7 +64,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_PATTERN_A.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_PATTERN_A(): string {
     return this._ERROR_PATTERN_A;
@@ -72,7 +72,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_PATTERN_B.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_PATTERN_B(): string {
     return this._ERROR_PATTERN_B;
@@ -80,7 +80,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_DATE_FORMAT.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_DATE_FORMAT(): string {
     return this._ERROR_DATE_FORMAT;
@@ -88,7 +88,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_DATE_RANGE.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_DATE_RANGE(): string {
     return this._ERROR_DATE_RANGE;
@@ -96,7 +96,7 @@ export class ConfigService {
 
   /**
    * Getter for ERROR_LOGIN_FAILED.
-   * @returns string the string constant.
+   * @returns {string} the string constant.
    */
   public get ERROR_LOGIN_FAILED(): string {
     return this._ERROR_LOGIN_FAILED;

@@ -15,7 +15,7 @@ export class SessionService {
 
   /**
    * Stores a token in the browser's local storage for later use.
-   * @param token the token object to be stored
+   * @param {Object} token the token object to be stored
    */
   public storeToken(token): void {
     const numberOfDays = JSON.parse(token.expiresIn.split(' ')[0]);
@@ -35,7 +35,7 @@ export class SessionService {
 
   /**
    * Gets the expiration date of the user's session.
-   * @returns moment the data and time of when the session will expire
+   * @returns {moment.Moment} the data and time of when the session will expire
    */
   public getTokenExpirationDate(): moment.Moment {
     const expirationDate = localStorage.getItem('expirationDate');
@@ -44,7 +44,7 @@ export class SessionService {
 
   /**
    * Checks to see if a user has been authenticated and is logged in.
-   * @returns boolean true if user is logged in
+   * @returns {boolean} true if user is logged in
    */
   public isUserLoggedIn(): boolean {
     return moment().isBefore(this.getTokenExpirationDate());
