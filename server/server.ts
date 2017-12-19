@@ -48,7 +48,7 @@ class Server {
 
   /**
    * Getter for the app.
-   * @returns express.Application the express app
+   * @returns {express.Application} the express app
    */
   public get app() {
     return this._app;
@@ -100,10 +100,10 @@ class Server {
   /**
    * Handles all the errors coming from the express server that has not
    * been handles already.
-   * @param err the error received
-   * @param req the request that caused the error
-   * @param res the response to be sent back to the client
-   * @param next the next function to be executed
+   * @param {any} err the error received
+   * @param {express.Request} req the request that caused the error
+   * @param {express.Response} res the response to be sent back to the client
+   * @param {express.NextFunction} next the next function to be executed
    */
   private errorHandler(err: any, req: express.Request,
     res: express.Response, next: express.NextFunction): void {

@@ -19,7 +19,8 @@ server.on('listening', onListening);
 
 /**
  * Handles port input.
- * @param val port to be normalized
+ * @param {number|string} val port to be normalized
+ * @returns {number|string|boolean} the normalized port ready for use
  */
 function normalizePort(val: number|string): number|string|boolean {
   const normalizedPort = (typeof val === 'string') ? parseInt(val, 10) : val;
@@ -34,7 +35,7 @@ function normalizePort(val: number|string): number|string|boolean {
 
 /**
  * Boilerplate code to handle errors when server runs.
- * @param error the error to be handled
+ * @param {NodeJS.ErrnoException} error the error to be handled
  */
 function onError(error: NodeJS.ErrnoException): void {
   if (error.syscall !== 'listen') {

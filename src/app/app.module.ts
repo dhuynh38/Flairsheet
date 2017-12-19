@@ -23,8 +23,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { ConfigService } from './services/config/config.service';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
+import { RedirectService } from './services/redirect/redirect.service';
 import { SessionService } from './services/session/session.service';
 import { UserService } from './services/user/user.service';
+
 /**
  * The root module that handles delcaring components, importing modules,
  * and providing services to components.
@@ -52,6 +54,7 @@ import { UserService } from './services/user/user.service';
   ],
   providers: [
     ConfigService,
+    RedirectService,
     SessionService,
     UserService,
     {

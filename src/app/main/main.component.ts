@@ -13,7 +13,7 @@ import { MatIconRegistry } from '@angular/material';
 export class MainComponent implements OnInit {
 
   /**
-   * Contructs the component and inject all parameters.
+   * Contructs the component and injects all parameters.
    */
   public constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
     iconRegistry.addSvgIcon(

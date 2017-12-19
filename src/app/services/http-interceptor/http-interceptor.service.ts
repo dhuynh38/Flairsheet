@@ -8,9 +8,9 @@ export class HttpInterceptorService implements HttpInterceptor {
   /**
    * Intercepts any requests sent to the backend and attaches a
    * token key to it to authenticate the user.
-   * @param req the request to intercept
-   * @param next the next handler that the request will go to before being sent
-   * @returns Observable<HttpEvent<any>> the observable that allows the HttpEvent
+   * @param {HttpRequest<any>} req the request to intercept
+   * @param {HttpHandler} next the next handler that the request will go to before being sent
+   * @returns {Observable<HttpEvent<any>>} the observable that allows the HttpEvent
    * to watched after interception
    */
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

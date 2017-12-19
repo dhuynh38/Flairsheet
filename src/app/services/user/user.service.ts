@@ -20,8 +20,8 @@ export class UserService {
   /**
    * POST: Save the user input into the database. The
    * server should respond with the same user in the database.
-   * @param User the user to be stored in the database
-   * @returns Observable<User> an observable to observe for data
+   * @param {User} user the user to be stored in the database
+   * @returns {Observable<User>} an observable to observe for data
    * coming from the server
    */
   public createUser(user: User): Observable<Object> {
@@ -33,8 +33,8 @@ export class UserService {
   /**
    * POST: Send the login request to the server. The
    * server should respond with the user from the database.
-   * @param User the user to be stored in the database
-   * @returns Observable<User> an observable to observe for data
+   * @param {User} user the user to be stored in the database
+   * @returns {Observable<User>} an observable to observe for data
    * coming from the server
    */
   public loginUser(user: User): Observable<Object> {
@@ -45,7 +45,7 @@ export class UserService {
 
   /**
    * GET: Gets all the users from the databse.
-   * @returns Observable<User> an observable to obtain for data
+   * @returns {Observable<User>} an observable to obtain for data
    * coming from the server
    */
   public getUsers(): Observable<User> {
