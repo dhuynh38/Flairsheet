@@ -121,15 +121,16 @@ mat-sidenav {
   padding: 0 100px;
 }
 
-#mat-tab-label-0-0, #mat-tab-label-0-1 {
-  min-width: 49%;
-  height: 30px;
-  opacity: 1;
+
+.mat-tab-label {
+  min-width: 49% !important;
+  height: 30px !important;
+  opacity: 1 !important;
 }
 
-.mat-tab-label-active, #mat-tab-label-0-0:focus, #mat-tab-label-0-1:focus {
-  color: $full-white;
-  background-color: $primary-blue;
+.mat-tab-label-active {
+  color: $full-white !important;
+  background-color: $primary-blue !important;
 }
 
 #main-card {

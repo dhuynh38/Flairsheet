@@ -78,14 +78,13 @@ class UserRouter {
    */
   private createUser(req: Request, res: Response): void {
     bcrypt.hash(req.body.password, 10).then((hash) => {
-      const password = hash;
       const newUser = new User({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         username: req.body.username,
         usernameOriginal: req.body.usernameOriginal,
         email: req.body.email,
-        password: req.body.password,
+        password: hash,
         birthday: req.body.birthday,
         sex: req.body.sex,
       });
