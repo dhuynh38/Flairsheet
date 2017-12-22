@@ -20,11 +20,15 @@ import { MainComponent } from './main/main.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SignupComponent } from './signup/signup.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { UploadComponent } from './upload/upload.component';
 
 import { ConfigService } from './services/config/config.service';
+import { FileService } from './services/file/file.service';
 import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
+import { PdfService } from './services/pdf/pdf.service';
 import { RedirectService } from './services/redirect/redirect.service';
 import { SessionService } from './services/session/session.service';
+import { UploadService } from './services/upload/upload.service';
 import { UserService } from './services/user/user.service';
 
 /**
@@ -35,12 +39,13 @@ import { UserService } from './services/user/user.service';
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     LoginComponent,
     MainComponent,
     PageNotFoundComponent,
     SignupComponent,
     SidebarComponent,
-    HomeComponent
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -54,8 +59,11 @@ import { UserService } from './services/user/user.service';
   ],
   providers: [
     ConfigService,
+    FileService,
+    PdfService,
     RedirectService,
     SessionService,
+    UploadService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

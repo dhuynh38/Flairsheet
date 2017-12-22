@@ -65,6 +65,7 @@ export class SignupComponent implements OnInit {
     this._maxDate = moment().subtract(13, 'years');
     this._minDate = moment().subtract(120, 'years');
     this.user = {
+      _id: '',
       firstname: '',
       lastname: '',
       username: '',
@@ -419,7 +420,6 @@ export class SignupComponent implements OnInit {
     this.user.password = this._form.get('password').value;
     this.user.birthday = this._form.get('birthday').value.toDate();
     this.user.sex = this._form.get('sex').value;
-    this.user.verified = false;
     this._userService.createUser(this.user).subscribe((results) => {
       this._sessionService.storeToken(results);
       if (this._redirectService.redirectUrl !== null) {

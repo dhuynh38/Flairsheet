@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { MainComponent } from '../main/main.component';
 import { HomeComponent } from '../home/home.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { UploadComponent } from './../upload/upload.component';
 
 import { RedirectService } from '../services/redirect/redirect.service';
 
@@ -18,6 +19,11 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [RedirectService]
+  },
+  {
+    path: 'upload',
+    component: UploadComponent,
     canActivate: [RedirectService]
   },
   {

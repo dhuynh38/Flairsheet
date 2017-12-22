@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
     this._loginErrorMessage = this._configService.ERROR_LOGIN_FAILED;
     this.createForm();
     this._user = {
+      _id: '',
       firstname: '',
       lastname: '',
       username: '',

@@ -1,0 +1,151 @@
+<div class="container full-screen"
+     fxLayout="column"
+     fxLayoutAlign="start center">
+
+  <mat-card class="margin-bottom-40 max-width-100">
+    <mat-card-content>
+      <h2 fxHide.xs>
+          Sharing your talent...
+      </h2>
+      <p fxHide.gt-xs
+         class="bold large-font-size margin-top-0">
+         Sharing your talent...
+      </p>
+
+      <form [formGroup]="form"
+            (ngSubmit)="upload(form)"
+            novalidate>
+
+        <div fxLayout.gt-xs="row"
+             fxLayout.xs="column"
+             fxLayoutAlign.gt-xs="space-between start"
+             fxLayoutAlign.xs="center center"
+             fxLayoutGap="20px"
+             class="margin-bottom-40">
+
+          <div class="image-container"
+               (click)="contentInput.click()">
+
+            <div *ngIf="canDisplayIcon()"
+                 class="thumbnail"
+                 fxLayout="column"
+                 fxLayoutAlign="center center">
+              <img fxFlex="80"
+                   class="full-width"
+                   [src]="iconUrl"
+                   alt="add content icon">
+              <h2 fxHide.gt-xs
+                  class="content-text">
+                Add Content
+              </h2>
+              <h2 fxHide.xs>
+                Add Content
+              </h2>
+            </div>
+            <img *ngIf="imageUrl"
+                 [src]="imageUrl"
+                 class="thumbnail"
+                 alt="image preview">
+            <video *ngIf="videoUrl"
+                   class="thumbnail"
+                   [src]="videoUrl"
+                   autoplay>
+              Your browser does not support the video tag.
+            </video>
+            <audio *ngIf="audioUrl"
+                   class="thumbnail"
+                   [src]="audioUrl"
+                   autoplay>
+              Your browser does not support the audio element.
+            </audio>
+            <img *ngIf="audioUrl"
+                 [src]="audioIconUrl"
+                 class="thumbnail"
+                 alt="audio preview icon">
+            <canvas *ngIf="pdfUrl"
+                    #pdfViewer
+                    class="thumbnail">
+              Your browser does not support canvas element.
+            </canvas>
+            <mat-error *ngIf="!isContentTypeValid()">
+              {{ contentTypeErrorMessage }}
+            </mat-error>
+          </div>
+
+          <div fxLayout="column"
+               fxLayoutAlign="start center">
+
+            <mat-form-field class="full-width margin-bottom-5">
+              <input name="title"
+                     matInput
+                     formControlName="title"
+                     placeholder="Title"
+                     required
+                     type="text">
+              <mat-error *ngIf="!isTitleValid()">
+                {{ titleErrorMessage }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="full-width margin-bottom-5">
+              <textarea name="description"
+                        matInput
+                        matTextareaAutosize
+                        matAutosizeMinRows="1"
+                        matAutosizeMaxRows="7"
+                        formControlName="description"
+                        placeholder="Description"
+                        required>
+              </textarea>
+              <mat-error *ngIf="!isDescriptionValid()">
+                {{ descriptionErrorMessage }}
+              </mat-error>
+            </mat-form-field>
+
+            <div fxLayout="row"
+                 class="max-width-100">
+              <mat-form-field class="almost-half-width margin-bottom-5">
+                <input name="major"
+                       matInput
+                       formControlName="major"
+                       placeholder="Major Category"
+                       required
+                       type="text">
+                <mat-error *ngIf="!isMajorValid()">
+                  {{ majorErrorMessage }}
+                </mat-error>
+              </mat-form-field>
+              <span class="fill-space"></span>
+              <mat-form-field class="almost-half-width margin-bottom-5">
+                <input name="minor"
+                       matInput
+                       formControlName="minor"
+                       placeholder="Minor Category"
+                       required
+                       type="text">
+                <mat-error *ngIf="!isMinorValid()">
+                  {{ minorErrorMessage }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <input hidden
+               type="file"
+               #contentInput
+               (change)="setSelectedFile()">
+
+        <button mat-raised-button
+                color="primary"
+                class="full-width"
+                aria-label="sign up button"
+                type="submit"
+                [disabled]="!form.valid">
+          Share
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+</div>

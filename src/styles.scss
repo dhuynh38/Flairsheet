@@ -4,11 +4,19 @@ $background-color: #E1EAEA;
 $full-white: #ffffff;
 $primary-blue: #2196f3;
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
 
-body, .full-screen {
+.full-screen {
+  height: 100vh;
+}
+
+body {
   min-height: 100%;
   padding: 0px;
   margin: 0px;
@@ -60,6 +68,10 @@ mat-sidenav {
 
 .full-width {
   width: 100%;
+}
+
+.max-width-100 {
+  max-width: 100%;
 }
 
 .center-text {
