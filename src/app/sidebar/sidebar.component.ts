@@ -1,4 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router} from '@angular/router';
+
+import { SessionService } from './../services/session/session.service';
 
 /**
  * Component that handles the sidebar.
@@ -16,7 +19,8 @@ export class SidebarComponent implements OnInit {
   /**
    * Contructs the component and inject all parameters.
    */
-  public constructor() { }
+  public constructor(private _router: Router,
+    private _sessionService: SessionService) { }
 
   /**
    * Angular runs after creating the component.
@@ -24,10 +28,20 @@ export class SidebarComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  /* Releases the sideMenuClick event up the chain
-  */
+  /**
+   * Releases the sideMenuClick event up the chain
+   */
   public emitSideMenuClick(): void {
     this.sideMenuClick.emit();
+  }
+
+  /**
+   * Clears the token in storage and sends the user back to
+   * the log in screen.
+   */
+  public logout(): void {
+    this._sessionService.deleteToken();
+    this._router.navigate(['']);
   }
 
 }

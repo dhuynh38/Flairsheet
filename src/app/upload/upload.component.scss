@@ -1,0 +1,42 @@
+$background-color: #E1EAEA;
+
+.margin-bottom-40 {
+  margin-bottom: 40px;
+}
+
+.margin-top-0 {
+  margin-top: 0px;
+}
+
+.thumbnail {
+  height: 100%;
+  width: 100%;
+  object-fit: contain
+}
+
+.content-text {
+  font-size: 5vw;
+}
+
+@media screen and (max-width: 959px) {
+  .image-container {
+    height: 50vw;
+    width: 50vw;
+    background-color: $background-color;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $background-color;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .image-container {
+    height: 20vw;
+    width: 20vw;
+    background-color: $background-color;
+    border-style: solid;
+    border-width: 1px;
+    border-color: $background-color;
+  }
+}
+

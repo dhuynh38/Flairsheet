@@ -13,6 +13,7 @@ import * as path from 'path';
 
 import Config from './config/config';
 
+import ContentRouter from './routers/content-router';
 import UserRouter from './routers/user-router';
 
 /**
@@ -50,7 +51,7 @@ class Server {
    * Getter for the app.
    * @returns {express.Application} the express app
    */
-  public get app() {
+  public get app(): express.Application {
     return this._app;
   }
 
@@ -91,6 +92,7 @@ class Server {
    * Sets up the REST endpoints that this server can go to.
    */
   private routes(): void {
+    this._app.use('/api/content', ContentRouter);
     this._app.use('/api/user', UserRouter);
     this._app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../app/index.html'));

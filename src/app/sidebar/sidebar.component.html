@@ -73,6 +73,22 @@
 
   <mat-card id="side-card">
     <mat-card-content fxLayout="column"
+                      fxLayoutGap="10px">
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              aria-label="upload side button"
+              routerLink="/upload"
+              routerLinkActive="active"
+              (click)="emitSideMenuClick()"
+              tabindex="-1">
+        Upload (Test)
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card id="side-card">
+    <mat-card-content fxLayout="column"
                       fxLayoutGap="5px">
       <button mat-raised-button
               color="primary"
@@ -100,7 +116,7 @@
               color="primary"
               class="full-width"
               aria-label="sign out side button"
-              (click)="emitSideMenuClick()"
+              (click)="emitSideMenuClick(); logout()"
               tabindex="-1">
         Sign Out
       </button>

@@ -11,7 +11,7 @@ import Config from '../config/config';
 import User from '../models/user';
 
 /**
- * Router to handle all requests to /api/user
+ * Router to handle all requests to /api/user/*
  */
 class UserRouter {
 
@@ -64,6 +64,7 @@ class UserRouter {
         data
       });
     }).catch((err) => {
+      console.log(err);
       res.status(500).json({
         message: 'Error: Cannot Get Users.'
       });
@@ -76,27 +77,17 @@ class UserRouter {
    * @param {Response} res the response to be sent to the user
    */
   private createUser(req: Request, res: Response): void {
-    const firstname = req.body.firstname;
-    const lastname = req.body.lastname;
-    const username = req.body.username;
-    const usernameOriginal = req.body.usernameOriginal;
-    const email = req.body.email;
-    const birthday = req.body.birthday;
-    const sex = req.body.sex;
-    const verified = req.body.verified;
-
     bcrypt.hash(req.body.password, 10).then((hash) => {
       const password = hash;
       const newUser = new User({
-        firstname,
-        lastname,
-        username,
-        usernameOriginal,
-        email,
-        password,
-        birthday,
-        sex,
-        verified
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        username: req.body.username,
+        usernameOriginal: req.body.usernameOriginal,
+        email: req.body.email,
+        password: req.body.password,
+        birthday: req.body.birthday,
+        sex: req.body.sex,
       });
 
       User.create(newUser).then((data) => {
@@ -107,6 +98,7 @@ class UserRouter {
           }
         });
       }).catch((err) => {
+        console.log(err);
         res.status(500).json({
           message: 'Error: Creating User Failed'
         });
@@ -144,6 +136,7 @@ class UserRouter {
         });
       });
     }).catch((err) => {
+      console.log(err);
       res.status(401).json({
         message: 'Error: Invalid Email Or Password.'
       });
