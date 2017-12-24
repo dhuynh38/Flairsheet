@@ -1,0 +1,69 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/index.html",
+        "/0.f9795c71f92fc6246790.chunk.js",
+        "/inline.362f227d0b0592eabecb.bundle.js",
+        "/main.cef1b0e59701cc6b5734.bundle.js",
+        "/polyfills.857165cbfc4318d1539e.bundle.js",
+        "/styles.e332ff0e6846a94fcfd7.bundle.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/favicons/android-chrome-192x192.png",
+        "/assets/favicons/android-chrome-512x512.png",
+        "/assets/favicons/apple-touch-icon.png",
+        "/assets/favicons/favicon-16x16.png",
+        "/assets/favicons/favicon-32x32.png",
+        "/assets/favicons/favicon.ico",
+        "/assets/favicons/mstile-150x150.png",
+        "/assets/favicons/safari-pinned-tab.svg",
+        "/assets/svg/add.svg",
+        "/assets/svg/audio.svg",
+        "/assets/svg/flare.svg",
+        "/assets/svg/profile.svg",
+        "/assets/svg/supervisor_account.svg",
+        "/assets/svg/thumbs-down.svg",
+        "/assets/svg/thumbs-up.svg",
+        "/assets/svg/visibility.svg"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/0.f9795c71f92fc6246790.chunk.js": "6045519f017a1fca233946070edc9f70c3a9b1c4",
+    "/assets/favicons/android-chrome-192x192.png": "0cf7037eedee54491f90232f77913fdc8471747a",
+    "/inline.362f227d0b0592eabecb.bundle.js": "114664911e84e833ecb657faf3e583f35e0f2d4f",
+    "/assets/favicons/android-chrome-512x512.png": "888011148e4ff82bd9c8eac5e420897d51e17606",
+    "/main.cef1b0e59701cc6b5734.bundle.js": "ac5d1edcca62f947b577ddd029cefdf22be25add",
+    "/assets/favicons/apple-touch-icon.png": "6ef86a97cd6910d1f482146251c143b35660f72f",
+    "/polyfills.857165cbfc4318d1539e.bundle.js": "2114491f4e705bf246ee6caecff1470bdcc55f37",
+    "/assets/favicons/favicon-16x16.png": "68980147b92e390e91f6fcaf67072d07bfc422a4",
+    "/styles.e332ff0e6846a94fcfd7.bundle.css": "0145a5a9d4ff95cba19259da556878af16d999dd",
+    "/assets/favicons/favicon-32x32.png": "823e95d3f0be6664b3a5e17132daa18348ad4d92",
+    "/index.html": "6118c2365e4749ba4f04bbfd6de76eccb65323ec",
+    "/assets/favicons/favicon.ico": "af2fd808783ec045b7562dec84a3d10607937820",
+    "/assets/favicons/mstile-150x150.png": "289103095bb40c86b8a9b4d61d065322ae9251ed",
+    "/assets/favicons/safari-pinned-tab.svg": "7d328ead1aefd21a9a86e628e46062fa9afa0873",
+    "/assets/svg/add.svg": "b6f6c1b3a2ab6752756bf98d1a800aaf82f61110",
+    "/assets/svg/audio.svg": "422433af8ca3a2a35bf825bae33e875849df6734",
+    "/assets/svg/flare.svg": "0706550d76ede56b061dbdcc5417dc01c6a0b141",
+    "/assets/svg/profile.svg": "3925e7d88f5b5532b25f483d15c9721fb583821e",
+    "/assets/svg/supervisor_account.svg": "60fa5bcd729b40e762fca0a35ac9091a90d76928",
+    "/assets/svg/thumbs-down.svg": "c533b4ef18deb7148846407d4c79e1d0eb45a2d0",
+    "/assets/svg/thumbs-up.svg": "76f7140e4f9e1e66cad5cc1d86c2a799a9cef067",
+    "/assets/svg/visibility.svg": "4c7caf316a17212ee0463431cdad2e93e1d5669a"
+  }
+}
