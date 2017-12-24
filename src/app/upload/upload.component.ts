@@ -4,10 +4,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Content } from '../models/content';
+import { Pdf } from '../models/pdf';
 
 import { ConfigService } from '../services/config/config.service';
 import { FileService } from './../services/file/file.service';
-import { PdfService } from '../services/pdf/pdf.service';
 import { UploadService } from './../services/upload/upload.service';
 
 @Component({
@@ -29,6 +29,7 @@ export class UploadComponent implements OnInit {
   private _videoUrl: SafeResourceUrl;
   private _audioUrl: SafeResourceUrl;
   private _pdfUrl: SafeResourceUrl;
+  private _pdf: any;
   private _titleErrorMessage: string;
   private _descriptionErrorMessage: string;
   private _minorErrorMessage: string;
@@ -42,7 +43,6 @@ export class UploadComponent implements OnInit {
       private _domSanitizer: DomSanitizer,
       private _configService: ConfigService,
       private _fileService: FileService,
-      private _pdfService: PdfService,
       private _uploadService: UploadService) {
     }
 
@@ -351,7 +351,7 @@ export class UploadComponent implements OnInit {
     } else if (this._file.type.includes('pdf')) {
       this._pdfUrl = 'exists';
       this._fileReader.onload = (event: any) => {
-        this._pdfService.displayFirstPage(
+        this._pdf = new Pdf(
           this._fileReader.result,
           this._pdfViewer.nativeElement
         );

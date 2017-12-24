@@ -14,6 +14,7 @@ import * as path from 'path';
 import Config from './config/config';
 
 import ContentRouter from './routers/content-router';
+import FileRouter from './routers/file-router';
 import UserRouter from './routers/user-router';
 
 /**
@@ -92,6 +93,7 @@ class Server {
    * Sets up the REST endpoints that this server can go to.
    */
   private routes(): void {
+    this._app.use('/api/file', FileRouter);
     this._app.use('/api/content', ContentRouter);
     this._app.use('/api/user', UserRouter);
     this._app.get('*', (req, res) => {

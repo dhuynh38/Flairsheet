@@ -4,7 +4,7 @@
 @include mat-core();
 
 $custom-theme-primary: mat-palette($mat_blue);
-$custom-theme-accent: mat-palette($mat_orange, A200, A100, A400);
+$custom-theme-accent: mat-palette($mat_orange);
 $custom-theme-warn: mat-palette($mat_red);
 
 $custom-theme: mat-light-theme($custom-theme-primary, $custom-theme-accent, $custom-theme-warn);

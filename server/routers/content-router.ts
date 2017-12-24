@@ -10,7 +10,7 @@ import Content from '../models/content';
 import User from '../models/user';
 
 /**
- * Router to handle all requests to /api/content/*
+ * Router to handle all requests to /api/content
  */
 class ContentRouter {
 
@@ -33,6 +33,43 @@ class ContentRouter {
    */
   public get router(): Router {
     return this._router;
+  }
+
+  /**
+   * GET: Gets the _ids of all contents.
+   * @param {any} req the request itself coming from the user
+   * @param {Response} res the response to be sent to the user
+   */
+  private getAllContentIds(req: any, res: Response): void {
+    Content.find({}).select('_id').then((data) => {
+      res.status(200).json({
+        data: data
+      });
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        message: 'Error: Cannot Get All Content Ids.'
+      });
+    });
+  }
+
+  /**
+   * GET: Gets the content with the specified id.
+   * @param {any} req the request itself coming from the user
+   * @param {Response} res the response to be sent to the user
+   */
+  private getContentWithId(req: any, res: Response): void {
+    Content.findById(req.params.contentId)
+      .populate('author', 'firstname lastname').then((data) => {
+      res.status(200).json({
+        data: data
+      });
+    }).catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        message: 'Error: Cannot Get Content With Id.'
+      });
+    });
   }
 
   /**
@@ -96,6 +133,8 @@ class ContentRouter {
    * those routes.
    */
   private routes(): void {
+    this._router.route('/').get((req, res) => this.getAllContentIds(req, res));
+    this._router.route('/:contentId').get((req, res) => this.getContentWithId(req, res));
     this._router.route('/upload').post(this._uploader.single('file'),
       (req, res) => this.uploadContent(req, res));
   }

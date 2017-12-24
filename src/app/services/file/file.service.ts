@@ -1,5 +1,9 @@
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
+import 'rxjs/add/operator/map';
 /**
  * Service to handle file type validation.
  */
@@ -14,7 +18,8 @@ export class FileService {
   /**
    * Contructs the service and injects all parameters.
    */
-  constructor() {
+  public constructor(private _http: HttpClient,
+    private _domSanitizer: DomSanitizer) {
     this._allowedImageType = [
       'image/jpg',
       'image/jpeg',
@@ -52,4 +57,25 @@ export class FileService {
     }
   }
 
+  /**
+   * GET: Gets one file's raw data based on given fileId.
+   * @param {string} fileId the fileId of the file to be retreived
+   * @param {string} contentType the content type of the file to be retreived
+   * @returns {Observable<any>} an observable containing
+   * raw binary data of the file or a url to a blob of the data
+   */
+  public getFileWithId(fileId: string, contentType: string): Observable<any> {
+    return this._http
+      .get('/api/file/' + fileId, {
+        responseType: 'arraybuffer'
+      })
+      .map((res) => {
+        if (!contentType.includes('pdf')) {
+          const blob = new Blob([res]);
+          const blobUrl = URL.createObjectURL(blob);
+          return this._domSanitizer.bypassSecurityTrustResourceUrl(blobUrl);
+        }
+        return res;
+      });
+  }
 }

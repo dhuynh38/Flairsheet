@@ -1,0 +1,66 @@
+$background-color: #E1EAEA;
+$audio-color: #4682b4;
+
+.thumbnail {
+  height: 100%;
+  width: 100%;
+  object-fit: contain
+}
+
+.image-container {
+  height: auto;
+  width: 100%;
+}
+
+.profile-image-container {
+  height: auto;
+  width: 20%;
+}
+
+.title-margin {
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+.padding-0 {
+  padding: 0px;
+}
+
+.description-margin {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+hr {
+  height: 5px;
+  background-color: $background-color;
+  margin: 0px;
+  border-width: 0px;
+}
+
+.button-center {
+  position: relative;
+  bottom: 2px;
+}
+
+@media screen and (max-width: 959px) {
+  .audio-icon {
+    height: 150px;
+    width: 100%;
+    object-fit: fill;
+    background-color: $audio-color;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .width-scaling {
+    width: 70%;
+  }
+
+  .audio-icon {
+    height: 400px;
+    width: 100%;
+    object-fit: fill;
+    background-color: $audio-color;
+  }
+}

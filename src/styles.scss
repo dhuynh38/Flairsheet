@@ -96,7 +96,7 @@ mat-sidenav {
   background-color: $background-color;
 }
 
-/* Recolor of components */
+/* Recolor and Remodel of components */
 .mat-button-toggle-checked {
   background-color: $primary-blue;
   color: $full-white;
@@ -105,6 +105,14 @@ mat-sidenav {
 .mat-button-toggle-disabled.mat-button-toggle-checked {
   background-color: $primary-blue;
   color: $full-white;;
+}
+
+#button .mat-ripple-element {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.mat-raised-button.mat-accent {
+  color: $full-white !important;
 }
 
 /* Header */
@@ -122,15 +130,25 @@ mat-sidenav {
 }
 
 
-.mat-tab-label {
-  min-width: 49% !important;
-  height: 30px !important;
-  opacity: 1 !important;
+#main .mat-tab-label {
+  min-width: 49%;
+  height: 30px;
+  opacity: 1;
 }
 
-.mat-tab-label-active {
-  color: $full-white !important;
-  background-color: $primary-blue !important;
+#content .mat-tab-label {
+  min-width: 33%;
+  height: 30px;
+  opacity: 1;
+}
+
+#main .mat-tab-label-active, #content .mat-tab-label-active {
+  color: $full-white;
+  background-color: $primary-blue;
+}
+
+#main .mat-tab-list, #content .mat-tab-list {
+  max-width: 100%;
 }
 
 #main-card {
@@ -139,4 +157,8 @@ mat-sidenav {
 
 .large-font-size {
   font-size: 6vw;
+}
+
+#content .mat-tab-header-pagination, #main .mat-tab-header-pagination {
+  display: none;
 }

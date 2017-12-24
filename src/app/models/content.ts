@@ -19,5 +19,5 @@ export interface Content {
   views: number;
   upvotes: number;
   downvotes: number;
-  file: File;
+  file: any;
 }

@@ -1,6 +1,13 @@
 <div class="container"
-  fxLayout="row"
-  fxLayoutGap="10px"
-  fxLayout.lt-md="column">
-  This is the home page. Test.
+     fxLayout="column"
+     fxLayoutGap="20px"
+     infiniteScroll
+     [infiniteScrollDistance]="5"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="onScroll()">
+
+     <app-content *ngFor="let content of contents"
+                  [content]="content">
+     </app-content>
+
 </div>
